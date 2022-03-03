@@ -1,10 +1,14 @@
+package co.yedam.home;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ProductUpdate {
+import co.yedam.common.Command;
+
+public class Home implements Command{
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		return "ProductUpdate.tiles";
+		return "Home.tiles";
 	}
 }

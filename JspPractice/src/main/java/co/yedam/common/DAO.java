@@ -1,4 +1,4 @@
-package co.micol.dbtest.common;
+package co.yedam.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,5 +18,7 @@ public class DAO {
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("데이터베이스 연결 실패!!!!");
 		}
+		
 	}
+	
 }
