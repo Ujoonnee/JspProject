@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery/dom.html</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(function() {	// $(document).ready(function() {
+		let fName = $('#container > div.row:nth-child(1) > span').html();
+		console.log(fName);
+		
+		$('#container > div.row:nth-child(1) > button').html('Delete');
+		
+		let btns = $('#container > div.row > button').html('Delete');
+		console.log(btns);
+		btns.each(function(index, item) {	// forEach(function(item, index, array){});
+			console.log(item, index);
+//			item.innerHTML = 'Del';
+			$(item).html('Del');	// js의 변수를 $() 로 감싸서 jquery object로 변환 (.html이 jquery method 이기 때문)
+			
+			if(index != 0) {
+				$(item).click(function() {	// $(item).on('click', function(){
+					console.log(this);
+					console.log($(this));
+					$(this).parent().remove();
+				});
+			}
+		});
+	})
+</script>
+</head>
+<body>
+	<div id="container">
+		<div class="row"><span>홍길동 </span><button>삭제</button></div>
+		<div class="row"><span>김민수 </span><button>삭제</button></div>
+		<div class="row"><span>박문식 </span><button>삭제</button></div>
+		<div class="col"><span>최우식 </span><button>삭제</button></div>
+	</div>
+</body>
+</html>

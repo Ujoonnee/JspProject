@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery/ajax.html</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url: 'basic.html',
+			type: 'get',
+			data: {id:30, name:'Hong'},
+			success: function(result) {
+				console.log(result);
+				$('#show').html(result);
+			},
+			error: function(reject) {
+				console.log(reject);
+				$('#show').html('<h3>status: ' + reject.status + 'error: ' + reject.statusText + '</h3>');
+			}
+		});
+	})
+</script>
+<body>
+	<div id="show"></div>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery/ajax.html</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url: '../ajax/noticeList.do',
+			type: 'get',
+			data: {id:30, name:'Hong'},
+			dataType: 'json',
+			success: function(result) {
+				console.log(result);
+//				$('#show').html(result);
+				result.forEach(function(item) {
+					$('<li>').html(item.id + ' ' + item.title);		// <li>id<li>
+					$('#show').html.append(ul);
+				})
+			},
+			error: function(reject) {
+				console.log(reject);
+				$('#show').html('<h3>status: ' + reject.status + 'error: ' + reject.statusText + '</h3>');
+			}
+		});
+	})
+</script>
+<body>
+	<div id="show"></div>
+</body>
+</html> -->

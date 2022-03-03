@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jquery/basic.html</title>
+<script src="./jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(() => {
+		console.log(h3);
+		$('#wrap').after(h3);	// document.querySelector('#wrap');
+		
+		let ul = $('<ul>').attr('id', 'list');
+		ul.append($('<li>').html('Apple')
+				, $('<li>').html('Banana')
+				, $('<li>').html('Cherry'));
+		
+		$('body').append(ul);
+	});
+	
+	let h3 = $('<h3>').attr('id', 'main');	// document.createElement('h3'); h3.setAttribute('id', 'main');
+	h3.html('Hello, JQuery!');	// h3.innerHTML = 'Hello JQuery!';
+</script>
+</head>
+<body>
+	<h3 id="wrap">JQuery Page</h3>
+</body>
+</html>
