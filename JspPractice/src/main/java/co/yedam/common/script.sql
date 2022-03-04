@@ -13,7 +13,8 @@ create table users (
     user_signup_date    date default sysdate,
     user_tel            varchar2(20),
     user_email          varchar2(30) not null,
-    user_address        varchar2(100)
+    user_address        varchar2(100),
+    user_authority      varchar2(10) default 'user'
 );
     
 create sequence user_num_seq;

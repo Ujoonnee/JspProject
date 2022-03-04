@@ -1,4 +1,4 @@
-
+package co.yedam.common;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,27 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.micol.dbtest.bbs.web.Bulletin;
-import co.micol.dbtest.bbs.web.BulletinDelete;
-import co.micol.dbtest.bbs.web.BulletinForm;
-import co.micol.dbtest.bbs.web.BulletinList;
-import co.micol.dbtest.bbs.web.BulletinSelect;
-import co.micol.dbtest.bbs.web.BulletinUpdate;
-import co.micol.dbtest.bbs.web.BulletinInsert;
-import co.micol.dbtest.member.web.MemberJoin;
-import co.micol.dbtest.member.web.MemberJoinForm;
-import co.micol.dbtest.member.web.MemberList;
-import co.micol.dbtest.member.web.MemberLogin;
-import co.micol.dbtest.member.web.MemberLoginForm;
-import co.micol.dbtest.member.web.MemberLoginOut;
-import co.micol.dbtest.notice.ajaxweb.AjaxNoticeInsert;
-import co.micol.dbtest.notice.ajaxweb.AjaxNoticeList;
-import co.micol.dbtest.notice.ajaxweb.NoticeClient;
-import co.micol.dbtest.notice.web.Notice;
-import co.micol.dbtest.notice.web.NoticeForm;
-import co.micol.dbtest.notice.web.NoticeList;
-import co.micol.dbtest.notice.web.NoticeListPaging;
-import co.micol.dbtest.notice.web.NoticeWrite;
+import co.yedam.cart.Cart;
+import co.yedam.home.Home;
+import co.yedam.mypage.MyPageCheck;
+import co.yedam.mypage.MyPageUpdate;
+import co.yedam.order.OrderList;
+import co.yedam.order.OrderPage;
+import co.yedam.product.ProductDetail;
+import co.yedam.product.ProductList;
+import co.yedam.product.ProductUpdate;
+import co.yedam.purchase.PurchaseHistory;
+import co.yedam.purchase.PurchaseHistoryDetail;
+import co.yedam.qna.Qna;
+import co.yedam.qna.QnaDetail;
+import co.yedam.qna.QnaForm;
+import co.yedam.user.UserInfo;
+import co.yedam.user.UserList;
+import co.yedam.user.UserLoginForm;
+import co.yedam.user.UserSignUpForm;
 
 // merge test comment
 
@@ -38,7 +35,7 @@ import co.micol.dbtest.notice.web.NoticeWrite;
 public class FrontController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private HashMap<String, DbCommand> map = new HashMap<String, DbCommand>();
+	private HashMap<String, Command> map = new HashMap<String, Command>();
 
 	public FrontController() {
 		super();
@@ -48,12 +45,12 @@ public class FrontController extends HttpServlet {
 		// TODO 호출명 저장소
 		map.put("/home.do", new Home()); // 1 홈화면
 	
-		map.put("/memberLoginForm.do", new MemberLoginForm()); // 2 로그인 폼 호출
-		map.put("/memberSignUpForm.do", new MemberSignUpForm()); // 3 회원가입 폼 호출
+		map.put("/userLoginForm.do", new UserLoginForm()); // 2 로그인 폼 호출
+		map.put("/userSignUpForm.do", new UserSignUpForm()); // 3 회원가입 폼 호출
 		
 		// admin pages
-		map.put("/memberList.do", new MemberList()); //4 회원리스트(관리자)
-		map.put("/memberInfo.do", new MemberInfo()); //5 회원 상세정보(관리자)
+		map.put("/userList.do", new UserList()); //4 회원리스트(관리자)
+		map.put("/userInfo.do", new UserInfo()); //5 회원 상세정보(관리자)
 		map.put("/orderList.do", new OrderList()); //6 주문목록(관리자)
 		
 		// Mypage
@@ -81,7 +78,7 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String path = uri.substring(contextPath.length());
 
-		DbCommand dbCommand = map.get(path);
+		Command dbCommand = map.get(path);
 		String viewPage = dbCommand.execute(request, response);
 
 		if (viewPage != null) {
