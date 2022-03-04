@@ -14,18 +14,18 @@ public class MyPageCheck implements Command {
 		UserService service = new UserServiceImpl();
 		UserVO vo = new UserVO();
 		
-		vo.setUserPw(request.getParameter("userPw"));
 		
+		vo.setUserPw(request.getParameter("userPw"));
+		vo = service.pwCheck(vo);
 		
 		String viewPage;
-		
-		if(vo.getUserName() != null) {
-			request.setAttribute("", vo.getUserId());  //세션에 id란 변수로 멤버아이디를 저장
+		if(vo.getUserId() != null) {
+			request.setAttribute("id", vo.getUserId());  
 			//비밀번호 확인시 마이페이지 경로 뜨도록
-			viewPage = ".do";
+			viewPage = "MyPageUpdate.jsp";
 		} else {
 			//비밀번호 실패시 홈으로 경로 정해줘야함 
-			viewPage = "home.do";
+			viewPage = "home.jsp";
 		}
 		
 		return viewPage;

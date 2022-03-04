@@ -18,10 +18,10 @@ public class UserLoginForm implements Command {
 		if(vo.getUserName() != null) {
 			request.setAttribute("id", vo.getUserId());  //세션에 id란 변수로 멤버아이디를 저장
 			//로그인 성공 경로 정해줘야함
-			viewPage = ".do";
+			viewPage = ".jsp";
 		} else {
 			//로그인 실패 경로 정해줘야함 
-			viewPage = ".do";
+			viewPage = ".jsp";
 		}
 		
 		return viewPage;
