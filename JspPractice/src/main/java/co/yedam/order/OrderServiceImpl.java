@@ -35,16 +35,17 @@ public class OrderServiceImpl extends DAO implements OrderService{
 	}
 	@Override
 	public List<OrderVO> selectOrder(OrderVO vo) {
-		String sql = "SELECT * FROM ORDERS WHERE USER_NUM = ?";
+		String sql = "SELECT * FROM ORDERS WHERE USER_ID = ?";
 		List<OrderVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getOrderNum());
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
+				
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
-				order.setUserId(rs.getString("User_id"));
+				order.setUserId(rs.getString("user_id"));
 				order.setProductSerial(rs.getInt("product_serial"));
 				order.setProductQuantity(rs.getInt("product_quantity"));
 				order.setOrderDate(rs.getString("order_date"));
