@@ -32,7 +32,7 @@ public class UserSignUpForm implements Command{
 		user.setUserAddress(address);
 		
 		//인터페이스 생성해야함
-		UserService service = new UserServiceImpl();
+		UserServiceImpl service = new UserServiceImpl();
 		service.insertUser(user);
 		
 

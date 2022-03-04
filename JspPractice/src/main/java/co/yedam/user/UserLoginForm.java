@@ -8,7 +8,7 @@ public class UserLoginForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		UserService dao = new UserServiceImpl();
+		UserServiceImpl dao = new UserServiceImpl();
 		UserVO vo = new UserVO();
 		
 		vo.setUserId(request.getParameter("userId"));
