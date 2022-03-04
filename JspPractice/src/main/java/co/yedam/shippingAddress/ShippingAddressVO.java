@@ -1,15 +1,16 @@
 package co.yedam.shippingAddress;
 
 public class ShippingAddressVO {
-	private String userNum;
+	private String userId;
 	private int isDefault;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String shippingAddress;
-	public String getUserNum() {
-		return userNum;
+	
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserNum(String userNum) {
-		this.userNum = userNum;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public int getIsDefault() {
 		return isDefault;
@@ -17,10 +18,10 @@ public class ShippingAddressVO {
 	public void setIsDefault(int isDefault) {
 		this.isDefault = isDefault;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public String getShippingAddress() {

@@ -1,37 +1,23 @@
 package co.yedam.cart;
 
 public class CartVO {
-	private int userNum;
-	private String productThumbnail;
-	private String productOption1;
-	private String productOption2;
+	private String userId;
+	private int productSerial;
 	private int productQuantity;
 	private int productPrice;
 	private String cartDate;
 	
-	public int getUserNum() {
-		return userNum;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public String getProductThumbnail() {
-		return productThumbnail;
+	public int getProductSerial() {
+		return productSerial;
 	}
-	public void setProductThumbnail(String productThumbnail) {
-		this.productThumbnail = productThumbnail;
-	}
-	public String getProductOption1() {
-		return productOption1;
-	}
-	public void setProductOption1(String productOption1) {
-		this.productOption1 = productOption1;
-	}
-	public String getProductOption2() {
-		return productOption2;
-	}
-	public void setProductOption2(String productOption2) {
-		this.productOption2 = productOption2;
+	public void setProductSerial(int productSerial) {
+		this.productSerial = productSerial;
 	}
 	public int getProductQuantity() {
 		return productQuantity;

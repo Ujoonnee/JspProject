@@ -8,22 +8,22 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
+public class ShippingAddressServiceImpl extends DAO implements ShippingAddressService {
 	PreparedStatement psmt;
 	ResultSet rs;
 	
 	@Override
 	public List<ShippingAddressVO> selectShippingAddressList() {
-		String sql = "SELECT * FROM SHIPPING_ADDRESS";
+		String sql = "SELECT * FROM shipping_address";
 		List<ShippingAddressVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ShippingAddressVO vo = new ShippingAddressVO();
-				vo.setUserNum(rs.getString("user_num"));
+				vo.setUserId(rs.getString("user_id"));
 				vo.setIsDefault(rs.getInt("is_defalut"));
-				vo.setPhoneNumber(rs.getInt("phone_number"));
+				vo.setPhoneNumber(rs.getString("phone_number"));
 				vo.setShippingAddress(rs.getString("shipping_address"));
 				
 				list.add(vo);
@@ -35,18 +35,20 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
 		}
 		return list;
 	}
+	
+	@Override
 	public List<ShippingAddressVO> selectShippingAddress(ShippingAddressVO vo) {
-		String sql = "SELECT * FROM SHIPPING_ADDRESS WHERE USER_NUM = ?";
+		String sql = "SELECT * FROM shipping_address WHERE user_id = ?";
 		List<ShippingAddressVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUserNum());
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ShippingAddressVO address = new ShippingAddressVO();
-				address.setUserNum(rs.getString("user_num"));
+				address.setUserId(rs.getString("user_id"));
 				address.setIsDefault(rs.getInt("is_defalut"));
-				address.setPhoneNumber(rs.getInt("phone_number"));
+				address.setPhoneNumber(rs.getString("phone_number"));
 				address.setShippingAddress(rs.getString("shipping_address"));
 				
 				list.add(address);
@@ -58,12 +60,14 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
 		}
 		return list;
 	}
+	
+	@Override
 	public int insertShippingAddress(ShippingAddressVO vo) {
-		String sql = "insert into SHIPPING_ADDRESS values(?,?,?,?)";
+		String sql = "INSERT INTO shipping_address VALUES(?,?,?,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, rs.getString("user_num"));
+			psmt.setString(1, rs.getString("user_id"));
 			psmt.setInt(2, rs.getInt("is_default"));
 			psmt.setInt(3, rs.getInt("phone_number"));
 			psmt.setString(4, rs.getString("shipping_address"));
@@ -76,12 +80,14 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
 		}
 		return r;
 	}
+	
+	@Override
 	public int deleteShippingAddress(ShippingAddressVO vo) {
-		String sql = "DELETE FROM SHIPPING_ADDRESS WHERE USER_NUM = ?";
+		String sql = "DELETE FROM shipping_address WHERE user_id= ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUserNum());
+			psmt.setString(1, vo.getUserId());
 			System.out.println(r + "건이 삭제되었습니다.");
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -90,14 +96,17 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
 		}
 		return r;
 	}
+	
+	@Override
 	public int updateShippingAddress(ShippingAddressVO vo) {
-		String sql = "UPDATE SHIPPING_ADDRESS IS_DEFAULT=?, PHONE_NUMBER=?,SHIPPING_ADDRESS=? WHERE USER_NUM  = ?";
+		String sql = "UPDATE shipping_address SET is_default = ?, phone_number = ?, shipping_address = ? WHERE user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, vo.getIsDefault());
-			psmt.setInt(2, vo.getPhoneNumber());
+			psmt.setString(2, vo.getPhoneNumber());
 			psmt.setString(3, vo.getShippingAddress());
+			psmt.setString(4, vo.getUserId());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 수정되었습니다.");
 		}catch (SQLException e) {
@@ -107,6 +116,7 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddress{
 		}
 		return r;
 	}
+	
 	private void close() {
 		try {
 			if (rs != null)

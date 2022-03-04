@@ -6,12 +6,13 @@ import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.cart.Cart;
-import co.yedam.home.Home;
+import co.yedam.main.Main;
 import co.yedam.mypage.MyPageCheck;
 import co.yedam.mypage.MyPageUpdate;
 import co.yedam.order.OrderList;
@@ -29,9 +30,8 @@ import co.yedam.user.UserList;
 import co.yedam.user.UserLoginForm;
 import co.yedam.user.UserSignUpForm;
 
-// merge test commenthjgjhgkjgjk
 
-//@WebServlet("/FrontController")
+@WebServlet("*.do")
 public class FrontController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		// TODO 호출명 저장소
-		map.put("/home.do", new Home()); // 1 홈화면
+		map.put("/main.do", new Main()); // 1 홈화면
 	
 		map.put("/userLoginForm.do", new UserLoginForm()); // 2 로그인 폼 호출
 		map.put("/userSignUpForm.do", new UserSignUpForm()); // 3 회원가입 폼 호출
@@ -65,7 +65,8 @@ public class FrontController extends HttpServlet {
 
 		// product pages
 		map.put("/productList.do", new ProductList()); //15 상품 목록
-		map.put("/productUpdate.do", new ProductUpdate()); //16 상품 등록(관리자)
+//		map.put("/productInsert.do"), new ProductInsert();	// 상품 등록(관리자) 
+		map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
 		map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
 		map.put("/orderPage.do", new OrderPage()); //18 주문 페이지
 	}
@@ -78,9 +79,11 @@ public class FrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String path = uri.substring(contextPath.length());
 
-		Command dbCommand = map.get(path);
-		String viewPage = dbCommand.execute(request, response);
-
+		Command command = map.get(path);
+		String viewPage = command.execute(request, response);
+		
+		System.out.println("FrontController : " + viewPage);
+		
 		if (viewPage != null) {
 			// ajax 응답
 			if (viewPage.startsWith("ajax:")) {
@@ -93,7 +96,7 @@ public class FrontController extends HttpServlet {
 			if (viewPage.endsWith(".jsp"))
 				viewPage = "WEB-INF/jsp/" + viewPage;
 
-			System.out.println(viewPage);
+			System.out.println("view resolve : " + viewPage);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}
