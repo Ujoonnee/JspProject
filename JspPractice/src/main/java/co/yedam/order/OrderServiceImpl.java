@@ -42,6 +42,7 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
+				
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
 				order.setUserId(rs.getString("user_id"));
