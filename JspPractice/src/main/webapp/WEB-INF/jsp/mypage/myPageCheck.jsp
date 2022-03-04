@@ -7,6 +7,11 @@
 <title>myPageCheck.jsp</title>
 </head>
 <body>
-
+<form>
+	<c:if test="${not empty id }">
+		<input type="hidden" name="userId" value="${id }">
+	</c:if>	
+	<input type="password" name="userPw">
+</form>
 </body>
 </html>
