@@ -16,6 +16,6 @@ public class UserList implements Command{
 		
 		request.setAttribute("list", list);
 		
-		return "UserList.tiles";
+		return "UserList.jsp";
 	}
 }

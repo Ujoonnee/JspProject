@@ -36,6 +36,6 @@ public class UserSignUpForm implements Command{
 		service.insertUser(user);
 		
 
-		return "UserSignUpForm.do";
+		return "UserSignUpForm.jsp";
 	}
 }
