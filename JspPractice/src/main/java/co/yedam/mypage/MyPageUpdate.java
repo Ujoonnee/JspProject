@@ -25,6 +25,6 @@ public class MyPageUpdate implements Command {
 		request.setAttribute("user", user);
 		
 		
-		return ".jsp";
+		return "myPageUpdate.jsp";
 	}
 }

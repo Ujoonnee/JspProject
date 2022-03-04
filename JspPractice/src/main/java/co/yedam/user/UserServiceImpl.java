@@ -78,12 +78,13 @@ public class UserServiceImpl extends DAO implements UserService {
    
    @Override
    public UserVO pwCheck(UserVO vo) {
-	   String sql = "select * from users where user_pw =?";
+	   String sql = "select user_id, user_pw from users where user_id =?";
 	   try{
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(2, vo.getUserPw());
+			psmt.setString(1, vo.getUserPw());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo.setUserId(rs.getString("user_id"));
 				vo.setUserPw(rs.getString("user_pw"));
 			}
 	   } catch(SQLException e) {
