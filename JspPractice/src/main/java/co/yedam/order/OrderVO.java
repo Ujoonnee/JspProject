@@ -2,7 +2,7 @@ package co.yedam.order;
 
 public class OrderVO {
 	private String orderNum;
-	private int userNum;
+	private String userId;
 	private int productSerial;
 	private int ProductQuantity;
 	private String orderDate;
@@ -12,11 +12,13 @@ public class OrderVO {
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-	public int getUserNum() {
-		return userNum;
+
+
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	public int getProductSerial() {
 		return productSerial;

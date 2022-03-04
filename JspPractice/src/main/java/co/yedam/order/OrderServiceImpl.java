@@ -21,8 +21,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			while(rs.next()) {
 			OrderVO vo = new OrderVO();
 			vo.setOrderNum(rs.getString("order_num"));
-			vo.setUserNum(rs.getInt("user_num"));
-			vo.setProductSerial(rs.getInt("product_serial"));
+			vo.setUserid(rs.getString("user_id"));
+			vo.setProductserial(rs.getInt("product_serial"));
 			vo.setProductQuantity(rs.getInt("product_quantity"));
 			vo.setOrderDate(rs.getString("order_date"));
 			}
@@ -44,8 +44,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			while(rs.next()) {
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
-				order.setUserNum(rs.getInt("user_num"));
-				order.setProductSerial(rs.getInt("product_serial"));
+				order.setUserid(rs.getString("User_id"));
+				order.setProductserial(rs.getInt("product_serial"));
 				order.setProductQuantity(rs.getInt("product_quantity"));
 				order.setOrderDate(rs.getString("order_date"));
 				list.add(order);
@@ -64,8 +64,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getOrderNum());
-			psmt.setInt(2, vo.getUserNum());
-			psmt.setInt(3, vo.getProductSerial());
+			psmt.setString(2, vo.getUserid());
+			psmt.setInt(3, vo.getProductserial());
 			psmt.setInt(4, vo.getProductQuantity());
 			psmt.setString(5, vo.getOrderDate());
 			r = psmt.executeUpdate();
@@ -96,13 +96,15 @@ public class OrderServiceImpl extends DAO implements OrderService{
 	}
 	@Override
 	public int updateOrder(OrderVO vo) {
-		String sql = "UPDATE ORDERS USER_NUM=?,PRODUCT_SERIAL=?,PRODUCT_QUANTITY=?,ORDER_DATE=?  SET WHERE ORDER_NUM=?";
+		String sql = "UPDATE ORDERS USER_ID=?,PRODUCT_SERIAL=?,PRODUCT_QUANTITY=?,ORDER_DATE=?  SET WHERE ORDER_NUM=?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getUserNum());
-			psmt.setInt(2, vo.getProductSerial());
-			psmt.setString(3, vo.getOrderNum());
+			psmt.setString(1, vo.getUserid());
+			psmt.setInt(2, vo.getProductserial());
+			psmt.setInt(3, vo.getProductQuantity());
+			psmt.setString(4, vo.getOrderDate());
+			psmt.setString(5, vo.getOrderNum());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 수정되었습니다.");
 		}catch (SQLException e) {
