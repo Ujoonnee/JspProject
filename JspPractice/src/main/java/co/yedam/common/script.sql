@@ -20,8 +20,8 @@ create table users (
 create sequence user_num_seq;
 
 create table orders (
-    order_num           varchar2(100) primary key,
-    user_id            number(20) not null,
+    order_num           varchar2(30) primary key,
+    user_id             varchar2(20) not null,
     product_serial      number(20) not null,
     product_quantity    number(20),
     order_date          date not null,
@@ -31,7 +31,7 @@ create table orders (
 create sequence order_num_seq;
 
 create table shipping_address (
-   user_num            number(20) primary key,
+    user_id             varchar2(20) primary key,
     is_defalut          number(1) default 0,
     phone_number        varchar2(20) not null,
     shipping_address    varchar2(100) not null,
@@ -40,7 +40,7 @@ create table shipping_address (
 
 create table products(
     product_serial      number(20) primary key,
-    product_name         varchar2(20),
+    product_name        varchar2(20),
     product_category1   varchar2(20),
     product_category2   varchar2(20),
     product_thumbnail   varchar2(200),
@@ -56,8 +56,8 @@ create table products(
 create sequence product_serial_seq;
 
 create table cart (
-    user_id             number(20),
-    product_serial      varchar2(20),
+    user_id             varchar2(20),
+    product_serial      number(20),
     product_quantity    number(20),
     product_price       number(20),
     cart_date           date,
@@ -66,7 +66,7 @@ create table cart (
 );
 
 create table qna (
-    user_num            number(20),
+    user_id             varchar2(20),
     qna_type            varchar2(20),
     order_num           varchar2(100),
     qna_date            date default sysdate,
@@ -79,11 +79,11 @@ create table qna (
     constraint fk_qna_order_num foreign key(order_num) references orders(order_num)
 );
 
-create table shipping_info (
+create table shipping (
      order_num          varchar2(100) primary key,
      shipping_address   varchar2(100),
      recipient_name     varchar2(100),
      phone_number       varchar2(20),
      comment            varchar2(100),
-     constraint fk_shipping_order_num foreign key(order_num) references orders(order_num),
+     constraint fk_shipping_order_num foreign key(order_num) references orders(order_num)
 );
