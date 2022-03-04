@@ -36,6 +36,6 @@ public class ProductUpdate implements Command{
 		ProductService service = new ProductServiceImpl();
 		service.updateProduct(product);
 		
-		return "ProductUpdate.jsp";
+		return "product/productUpdate.jsp";
 	}
 }

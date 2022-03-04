@@ -21,8 +21,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			while(rs.next()) {
 			OrderVO vo = new OrderVO();
 			vo.setOrderNum(rs.getString("order_num"));
-			vo.setUserid(rs.getString("user_id"));
-			vo.setProductserial(rs.getInt("product_serial"));
+			vo.setUserId(rs.getString("user_id"));
+			vo.setProductSerial(rs.getInt("product_serial"));
 			vo.setProductQuantity(rs.getInt("product_quantity"));
 			vo.setOrderDate(rs.getString("order_date"));
 			}
@@ -35,17 +35,17 @@ public class OrderServiceImpl extends DAO implements OrderService{
 	}
 	@Override
 	public List<OrderVO> selectOrder(OrderVO vo) {
-		String sql = "SELECT * FROM ORDERS WHERE USER_NUM = ?";
+		String sql = "SELECT * FROM ORDERS WHERE USER_ID = ?";
 		List<OrderVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getOrderNum());
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
-				order.setUserid(rs.getString("User_id"));
-				order.setProductserial(rs.getInt("product_serial"));
+				order.setUserId(rs.getString("user_id"));
+				order.setProductSerial(rs.getInt("product_serial"));
 				order.setProductQuantity(rs.getInt("product_quantity"));
 				order.setOrderDate(rs.getString("order_date"));
 				list.add(order);
@@ -64,8 +64,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getOrderNum());
-			psmt.setString(2, vo.getUserid());
-			psmt.setInt(3, vo.getProductserial());
+			psmt.setString(2, vo.getUserId());
+			psmt.setInt(3, vo.getProductSerial());
 			psmt.setInt(4, vo.getProductQuantity());
 			psmt.setString(5, vo.getOrderDate());
 			r = psmt.executeUpdate();
@@ -100,8 +100,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUserid());
-			psmt.setInt(2, vo.getProductserial());
+			psmt.setString(1, vo.getUserId());
+			psmt.setInt(2, vo.getProductSerial());
 			psmt.setInt(3, vo.getProductQuantity());
 			psmt.setString(4, vo.getOrderDate());
 			psmt.setString(5, vo.getOrderNum());

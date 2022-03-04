@@ -1,5 +1,5 @@
 package co.yedam.product;
-import java.lang.reflect.Member;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +12,6 @@ public class ProductDetail implements Command {
 		
 		ProductServiceImpl service = new ProductServiceImpl();
 		
-		return "ProductDetail.jsp";
+		return "product/productDetail.jsp";
 	}
 }

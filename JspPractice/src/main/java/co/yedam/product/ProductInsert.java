@@ -37,6 +37,6 @@ public class ProductInsert implements Command {
 		
 		ProductService service = new ProductServiceImpl();
 		service.insertProduct(product);
-		return "ProductInsert.jsp";
+		return "product/productInsert.jsp";
 	}
 }
