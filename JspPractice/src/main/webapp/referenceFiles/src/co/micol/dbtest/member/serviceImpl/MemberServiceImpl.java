@@ -45,6 +45,8 @@ public class MemberServiceImpl extends DAO implements MemberService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	@Override
 	public int insertMember(MemberVO vo) {

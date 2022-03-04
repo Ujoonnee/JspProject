@@ -1,6 +1,6 @@
-package co.yedam.address;
+package co.yedam.shippingAddress;
 
-public class ShippingAddress {
+public class ShippingAddressVO {
 	private String userNum;
 	private int isDefault;
 	private int phoneNumber;

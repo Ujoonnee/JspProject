@@ -79,7 +79,7 @@ create table qna (
     constraint fk_qna_order_num foreign key(order_num) references orders(order_num)
 );
 
-create table shipping_Info (
+create table shipping_info (
      order_num          varchar2(100) primary key,
      shipping_address   varchar2(100),
      recipient_name     varchar2(100),
