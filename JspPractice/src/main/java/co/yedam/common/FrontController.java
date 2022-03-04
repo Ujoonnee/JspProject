@@ -59,7 +59,7 @@ public class FrontController extends HttpServlet {
 		map.put("/purchaseHistory.do", new PurchaseHistory()); //9 마이페이지(구매내역)	
 		map.put("/purchaseHistoryDetail.do", new PurchaseHistoryDetail()); //10 마이페이지(구매내역 상세)
 		map.put("/cart.do", new Cart()); //11 마이페이지(장바구니)
-		map.put("/qna.do", new Qna()); //12 마이페이지(1:1문의)
+//		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
 		map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
 		map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
 
