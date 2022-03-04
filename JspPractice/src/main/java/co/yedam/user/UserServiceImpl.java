@@ -8,7 +8,7 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class UserServiceImpl extends DAO{
+public class UserServiceImpl extends DAO implements UserService {
    private PreparedStatement psmt;
    private ResultSet rs;
 
@@ -102,7 +102,7 @@ public class UserServiceImpl extends DAO{
    }
 
    public int updateUser(UserVO vo) {
-      String sql = "update users set user_pw = ?, user_tel = ?, user_email = ?, user_address = ? where user_num = ?";
+      String sql = "update users set user_pw = ?, user_tel = ?, user_email = ?, user_address = ? where user_id = ?";
       int r = 0;
       try {
          psmt.setString(1, vo.getUserPw());
@@ -121,7 +121,7 @@ public class UserServiceImpl extends DAO{
    }
 
    public int deleteUser(UserVO vo) {
-      String sql = "delete from users where user_num = ?";
+      String sql = "delete from users where user_id = ?";
       int r = 0;
       try {
          psmt.setInt(1, vo.getUserNum());

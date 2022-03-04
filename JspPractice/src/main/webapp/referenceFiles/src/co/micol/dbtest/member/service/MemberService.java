@@ -1,7 +1,6 @@
 package co.micol.dbtest.member.service;
 
 import java.util.List;
-
 import co.micol.dbtest.member.vo.MemberVO;
 
 public interface MemberService {
