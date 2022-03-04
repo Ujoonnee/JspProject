@@ -8,10 +8,11 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class ProductServiceImpl extends DAO{
+public class ProductServiceImpl extends DAO implements ProductService{
 	private PreparedStatement psmt;
 	private ResultSet rs;
 
+	@Override
 	public List<ProductVO> selectProductList() {
 		String sql = "select * from products";
 		List<ProductVO> list = new ArrayList<>();
@@ -21,13 +22,16 @@ public class ProductServiceImpl extends DAO{
 			
 			while(rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProductNum(rs.getInt("product_num"));
+				product.setProductSerial(rs.getInt("product_serial"));
+				product.setProductName(rs.getString("product_name"));
 				product.setProductCategory1(rs.getString("product_category1"));
 				product.setProductCategory2(rs.getString("product_category2"));
 				product.setProductThumbnail(rs.getString("product_thumbnail"));
 				product.setProductInfo(rs.getString("product_info"));
 				product.setProductOption1(rs.getString("product_option1"));
+				product.setOption1Detail(rs.getString("option1_detail"));;
 				product.setProductOption2(rs.getString("product_option2"));
+				product.setProductOption1(rs.getString("option2_detail"));
 				product.setProductStock(rs.getInt("product_stock"));
 				product.setProductPrice(rs.getInt("product_price"));
 				
@@ -41,24 +45,27 @@ public class ProductServiceImpl extends DAO{
 		
 		return list;
 	}
-
+	@Override
 	public ProductVO selectProduct(ProductVO vo) {
-		String sql = "select * from products where product_num = ?";
+		String sql = "select * from products where product_serial = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getProductNum());
-			
+			psmt.setInt(1, vo.getProductSerial());
 			rs = psmt.executeQuery();
 			
 			if (rs.next()) {
+				vo.setProductSerial(rs.getInt("product_serial"));
 				vo.setProductCategory1(rs.getString("product_category1"));
 				vo.setProductCategory2(rs.getString("product_category2"));
 				vo.setProductThumbnail(rs.getString("product_thumbnail"));
 				vo.setProductInfo(rs.getString("product_info"));
 				vo.setProductOption1(rs.getString("product_option1"));
+				vo.setOption1Detail(rs.getString("option1_detail"));
 				vo.setProductOption2(rs.getString("product_option2"));
+				vo.setOption2Detail(rs.getString("option1_detai2"));
 				vo.setProductStock(rs.getInt("product_stock"));
 				vo.setProductPrice(rs.getInt("product_price"));
+				
 			}
 			
 			
@@ -70,20 +77,23 @@ public class ProductServiceImpl extends DAO{
 		
 		return vo;
 	}
-
+	@Override
 	public int insertProduct(ProductVO vo) {
-		String sql = "insert into products values(product_num_seq.nextval,?,?,?,?,?,?,?,?)";
+		String sql = "insert into products values(product_num_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getProductCategory1());
-			psmt.setString(2, vo.getProductCategory2());
-			psmt.setString(3, vo.getProductThumbnail());
-			psmt.setString(4, vo.getProductInfo());
-			psmt.setString(5, vo.getProductOption1());
-			psmt.setString(6, vo.getProductOption2());
-			psmt.setInt(7, vo.getProductStock());
-			psmt.setInt(8, vo.getProductPrice());
+			psmt.setString(1, vo.getProductName());
+			psmt.setString(2, vo.getProductCategory1());
+			psmt.setString(3, vo.getProductCategory2());
+			psmt.setString(4, vo.getProductThumbnail());
+			psmt.setString(5, vo.getProductInfo());
+			psmt.setString(6, vo.getProductOption1());
+			psmt.setString(7, vo.getOption1Detail());			
+			psmt.setString(8, vo.getProductOption2());
+			psmt.setString(9, vo.getOption2Detail());
+			psmt.setInt(10, vo.getProductStock());
+			psmt.setInt(11, vo.getProductPrice());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건 입력");
 
@@ -94,21 +104,23 @@ public class ProductServiceImpl extends DAO{
 		}
 		return r;
 	}
-
+	@Override
 	public int updateProduct(ProductVO vo) {
-		String sql = "update products set product_category1 = ?, product_category2 = ?, product_thumbnail = ?, product_info = ?, product_option1 = ?, product_option2 = ?, product_stock = ?, product_price = ? where product_num = ?";
+		String sql = "update products set product_name = ?, product_category1 = ?, product_category2 = ?, product_thumbnail = ?, product_info = ?, product_option1 = ?, option1_detail = ?, product_option2 = ?, option2_detail = ?, product_stock = ?, product_price = ? where product_num = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getProductCategory1());
-			psmt.setString(2, vo.getProductCategory2());
-			psmt.setString(3, vo.getProductThumbnail());
-			psmt.setString(4, vo.getProductInfo());
-			psmt.setString(5, vo.getProductOption1());
-			psmt.setString(6, vo.getProductOption2());
-			psmt.setInt(7, vo.getProductStock());
-			psmt.setInt(8, vo.getProductPrice());
-			psmt.setInt(9, vo.getProductNum());
+			psmt.setString(1, vo.getProductName());
+			psmt.setString(2, vo.getProductCategory1());
+			psmt.setString(3, vo.getProductCategory2());
+			psmt.setString(4, vo.getProductThumbnail());
+			psmt.setString(5, vo.getProductInfo());
+			psmt.setString(6, vo.getProductOption1());
+			psmt.setString(7, vo.getOption1Detail());			
+			psmt.setString(8, vo.getProductOption2());
+			psmt.setString(9, vo.getOption2Detail());
+			psmt.setInt(10, vo.getProductStock());
+			psmt.setInt(11, vo.getProductPrice());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건 수정");
 			
@@ -118,13 +130,14 @@ public class ProductServiceImpl extends DAO{
 		
 		return r;
 	}
-
+	
+	@Override
 	public int deleteProduct(ProductVO vo) {
 		String sql = "delete from users where user_num = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getProductNum());
+			psmt.setInt(1, vo.getProductSerial());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건 삭제");
 			

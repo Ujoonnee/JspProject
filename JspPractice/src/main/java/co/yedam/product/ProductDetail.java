@@ -1,4 +1,6 @@
 package co.yedam.product;
+import java.lang.reflect.Member;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,8 +9,9 @@ import co.yedam.common.Command;
 public class ProductDetail implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-
-		return "ProductDetail.tiles";
+		
+		ProductServiceImpl service = new ProductServiceImpl();
+		
+		return "ProductDetail.jsp";
 	}
 }
