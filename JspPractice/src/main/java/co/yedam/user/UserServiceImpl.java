@@ -11,7 +11,8 @@ import co.yedam.common.DAO;
 public class UserServiceImpl extends DAO implements UserService {
    private PreparedStatement psmt;
    private ResultSet rs;
-
+   
+   @Override
    public List<UserVO> selectUserList() {
       // TODO Auto-generated method stub
       String sql = "select * from users";
@@ -44,12 +45,12 @@ public class UserServiceImpl extends DAO implements UserService {
       return list;
    }
 
-   
+   @Override
    public UserVO selectUser(UserVO vo) {
       String sql = "select * from users where user_id = ?";
       try {
          psmt = conn.prepareStatement(sql);
-         psmt.setInt(1, vo.getUserNum());
+         psmt.setString(1, vo.getUserId());
          
          rs = psmt.executeQuery();
          
@@ -74,10 +75,29 @@ public class UserServiceImpl extends DAO implements UserService {
       
       return vo;
    }
-
+   
+   @Override
+   public UserVO pwCheck(UserVO vo) {
+	   String sql = "select * from users where user_pw =?";
+	   try{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(2, vo.getUserPw());
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setUserPw(rs.getString("user_pw"));
+			}
+	   } catch(SQLException e) {
+		   e.printStackTrace();
+	   } finally {
+		   close();
+	   }
+	return vo;
+   }
+   
+   @Override
    public int insertUser(UserVO vo) {
       // TODO Auto-generated method stub
-      String sql = "insert into users values(user_num_seq.nextval, ?,?,?,?,?,?,?,?,?,?)";
+      String sql = "insert into users values(user_num_seq.nextval, ?,?,?,?,user_signup_date.sysdate,?,?,?,?)";
       int r = 0;
       try {
          psmt = conn.prepareStatement(sql);
@@ -100,7 +120,8 @@ public class UserServiceImpl extends DAO implements UserService {
       }
       return r;
    }
-
+   
+   @Override
    public int updateUser(UserVO vo) {
       String sql = "update users set user_pw = ?, user_tel = ?, user_email = ?, user_address = ? where user_id = ?";
       int r = 0;
@@ -119,12 +140,13 @@ public class UserServiceImpl extends DAO implements UserService {
       
       return r;
    }
-
+   
+   @Override
    public int deleteUser(UserVO vo) {
       String sql = "delete from users where user_id = ?";
       int r = 0;
       try {
-         psmt.setInt(1, vo.getUserNum());
+         psmt.setString(1, vo.getUserId());
          r = psmt.executeUpdate();
          System.out.println(r + "건 삭제");
          
