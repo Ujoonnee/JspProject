@@ -32,6 +32,8 @@ import co.micol.dbtest.notice.web.NoticeList;
 import co.micol.dbtest.notice.web.NoticeListPaging;
 import co.micol.dbtest.notice.web.NoticeWrite;
 
+// merge test comment
+
 //@WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
 
