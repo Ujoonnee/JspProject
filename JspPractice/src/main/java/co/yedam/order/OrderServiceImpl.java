@@ -8,7 +8,7 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class OrderServiceImple extends DAO implements OrderService{
+public class OrderServiceImpl extends DAO implements OrderService{
 	PreparedStatement psmt;
 	ResultSet rs;
 	@Override
