@@ -8,7 +8,7 @@ import co.yedam.common.Command;
 public class UserInfo implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub dtd
 
 		UserServiceImpl dao = new UserServiceImpl();
 		UserVO user = new UserVO();
