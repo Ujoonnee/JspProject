@@ -15,6 +15,6 @@ public class ProductList implements Command {
 		
 		request.setAttribute("productList", productList);
 		
-		return "ProductList.jsp";
+		return "product/productList.jsp";
 	}
 }

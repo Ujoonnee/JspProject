@@ -6,14 +6,13 @@ public class OrderVO {
 	private int productSerial;
 	private int ProductQuantity;
 	private String orderDate;
+	
 	public String getOrderNum() {
 		return orderNum;
 	}
 	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
-
-
 	public String getUserId() {
 		return userId;
 	}
