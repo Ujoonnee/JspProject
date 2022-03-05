@@ -1,17 +1,14 @@
 package co.yedam.product;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Command;
 
-public class ProductUpdate implements Command{
+public class ProductInsertForm implements Command {
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
-		ProductService service = new ProductServiceImpl();
-		ProductVO product = new ProductVO();
-		ProductVO productSelect = service.selectProduct(product);
-		request.setAttribute("productSelect", productSelect);
 		
 		String productThumbnail = request.getParameter("productThumbnail");
 		String productName = request.getParameter("productName");
@@ -21,7 +18,7 @@ public class ProductUpdate implements Command{
 		int productStock = Integer.parseInt(request.getParameter("productStock"));
 		int productPrice = Integer.parseInt(request.getParameter("productPrice"));
 		
-		product = new ProductVO();
+		ProductVO product = new ProductVO();
 		product.setProductThumbnail(productThumbnail);
 		product.setProductName(productName);
 		product.setProductCategory1(productCategory1);
@@ -30,9 +27,10 @@ public class ProductUpdate implements Command{
 		product.setProductStock(productStock);
 		product.setProductPrice(productPrice);
 		
+		ProductService service = new ProductServiceImpl();
+		service.insertProduct(product);
+		return "product/productInsertForm.jsp";
 		
-		service.updateProduct(product);
-		
-		return "product/productUpdate.jsp";
 	}
+
 }
