@@ -28,10 +28,6 @@ public class ProductServiceImpl extends DAO implements ProductService{
 				product.setProductCategory2(rs.getString("product_category2"));
 				product.setProductThumbnail(rs.getString("product_thumbnail"));
 				product.setProductInfo(rs.getString("product_info"));
-				product.setProductOption1(rs.getString("product_option1"));
-				product.setOption1Detail(rs.getString("option1_detail"));;
-				product.setProductOption2(rs.getString("product_option2"));
-				product.setProductOption1(rs.getString("option2_detail"));
 				product.setProductStock(rs.getInt("product_stock"));
 				product.setProductPrice(rs.getInt("product_price"));
 				
@@ -59,10 +55,6 @@ public class ProductServiceImpl extends DAO implements ProductService{
 				vo.setProductCategory2(rs.getString("product_category2"));
 				vo.setProductThumbnail(rs.getString("product_thumbnail"));
 				vo.setProductInfo(rs.getString("product_info"));
-				vo.setProductOption1(rs.getString("product_option1"));
-				vo.setOption1Detail(rs.getString("option1_detail"));
-				vo.setProductOption2(rs.getString("product_option2"));
-				vo.setOption2Detail(rs.getString("option1_detai2"));
 				vo.setProductStock(rs.getInt("product_stock"));
 				vo.setProductPrice(rs.getInt("product_price"));
 				
@@ -79,7 +71,7 @@ public class ProductServiceImpl extends DAO implements ProductService{
 	}
 	@Override
 	public int insertProduct(ProductVO vo) {
-		String sql = "insert into products values(product_num_seq.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into products values(product_serial_seq.nextval,?,?,?,?,?,?,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -88,12 +80,8 @@ public class ProductServiceImpl extends DAO implements ProductService{
 			psmt.setString(3, vo.getProductCategory2());
 			psmt.setString(4, vo.getProductThumbnail());
 			psmt.setString(5, vo.getProductInfo());
-			psmt.setString(6, vo.getProductOption1());
-			psmt.setString(7, vo.getOption1Detail());			
-			psmt.setString(8, vo.getProductOption2());
-			psmt.setString(9, vo.getOption2Detail());
-			psmt.setInt(10, vo.getProductStock());
-			psmt.setInt(11, vo.getProductPrice());
+			psmt.setInt(6, vo.getProductStock());
+			psmt.setInt(7, vo.getProductPrice());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건 입력");
 
@@ -106,7 +94,7 @@ public class ProductServiceImpl extends DAO implements ProductService{
 	}
 	@Override
 	public int updateProduct(ProductVO vo) {
-		String sql = "update products set product_name = ?, product_category1 = ?, product_category2 = ?, product_thumbnail = ?, product_info = ?, product_option1 = ?, option1_detail = ?, product_option2 = ?, option2_detail = ?, product_stock = ?, product_price = ? where product_num = ?";
+		String sql = "update products set product_name = ?, product_category1 = ?, product_category2 = ?, product_thumbnail = ?, product_info = ?, product_stock = ?, product_price = ? where product_serial = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -115,12 +103,10 @@ public class ProductServiceImpl extends DAO implements ProductService{
 			psmt.setString(3, vo.getProductCategory2());
 			psmt.setString(4, vo.getProductThumbnail());
 			psmt.setString(5, vo.getProductInfo());
-			psmt.setString(6, vo.getProductOption1());
-			psmt.setString(7, vo.getOption1Detail());			
-			psmt.setString(8, vo.getProductOption2());
-			psmt.setString(9, vo.getOption2Detail());
-			psmt.setInt(10, vo.getProductStock());
-			psmt.setInt(11, vo.getProductPrice());
+			psmt.setInt(6, vo.getProductStock());
+			psmt.setInt(7, vo.getProductPrice());
+			psmt.setInt(8, vo.getProductSerial());
+			
 			r = psmt.executeUpdate();
 			System.out.println(r + "건 수정");
 			
@@ -133,7 +119,7 @@ public class ProductServiceImpl extends DAO implements ProductService{
 	
 	@Override
 	public int deleteProduct(ProductVO vo) {
-		String sql = "delete from users where user_num = ?";
+		String sql = "delete from users where product_serial = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);

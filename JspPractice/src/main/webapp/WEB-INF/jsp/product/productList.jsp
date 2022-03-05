@@ -8,6 +8,20 @@
 <title>productList.jsp</title>
 </head>
 <body>
-	
+	<div>
+		<table class="table" border="1">
+		
+			<tr>
+				<th align="center" colspan="2">${productList.productThumbnail}</th>
+			</tr>
+			<c:forEach var="product" items="${list}">
+				<tr>
+					<td align="center">${product.productThumbnail}</td>
+					<td align="center">${product.productName}</td>
+					<td align="center">${product.productPrice}</td>
+				</tr>
+			</c:forEach>
+			</table>
+	</div>
 </body>
 </html>

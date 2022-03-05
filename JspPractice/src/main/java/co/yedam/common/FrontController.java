@@ -18,13 +18,15 @@ import co.yedam.mypage.MyPageUpdate;
 import co.yedam.order.OrderList;
 import co.yedam.order.OrderPage;
 import co.yedam.product.ProductDetail;
+import co.yedam.product.ProductInsert;
+import co.yedam.product.ProductInsertForm;
 import co.yedam.product.ProductList;
 import co.yedam.product.ProductUpdate;
 import co.yedam.purchase.PurchaseHistory;
 import co.yedam.purchase.PurchaseHistoryDetail;
-import co.yedam.qna.Qna;
 import co.yedam.qna.QnaDetail;
 import co.yedam.qna.QnaForm;
+import co.yedam.qna.QnaList;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
 import co.yedam.user.UserLoginForm;
@@ -59,16 +61,17 @@ public class FrontController extends HttpServlet {
 		map.put("/purchaseHistory.do", new PurchaseHistory()); //9 마이페이지(구매내역)	
 		map.put("/purchaseHistoryDetail.do", new PurchaseHistoryDetail()); //10 마이페이지(구매내역 상세)
 		map.put("/cart.do", new Cart()); //11 마이페이지(장바구니)
-//		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
+		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
 		map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
 		map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
 
 		// product pages
-		map.put("/productList.do", new ProductList()); //15 상품 목록
-//		map.put("/productInsert.do"), new ProductInsert();	// 상품 등록(관리자) 
-		map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
-		map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
-		map.put("/orderPage.do", new OrderPage()); //18 주문 페이지
+        map.put("/productList.do", new ProductList()); //15 상품 목록
+        map.put("/productInsertForm.do", new ProductInsertForm());    // 상품 등록 페이지(관리자)
+        map.put("/productInsert.do", new ProductInsert());    // 상품 등록(관리자)
+        map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
+        map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
+        map.put("/orderPage.do", new OrderPage()); //18 주문 페이지
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

@@ -7,10 +7,6 @@ public class ProductVO {
 	private String productCategory2;
 	private String productThumbnail;
 	private String productInfo;
-	private String productOption1;
-	private String option1Detail;
-	private String productOption2;
-	private String option2Detail;
 	private int productStock;
 	private int productPrice;
 
@@ -41,22 +37,6 @@ public class ProductVO {
 		this.productName = productName;
 	}
 
-	public String getOption1Detail() {
-		return option1Detail;
-	}
-
-	public void setOption1Detail(String option1Detail) {
-		this.option1Detail = option1Detail;
-	}
-
-	public String getOption2Detail() {
-		return option2Detail;
-	}
-
-	public void setOption2Detail(String option2Detail) {
-		this.option2Detail = option2Detail;
-	}
-
 	public String getProductCategory2() {
 		return productCategory2;
 	}
@@ -79,22 +59,6 @@ public class ProductVO {
 
 	public void setProductInfo(String productInfo) {
 		this.productInfo = productInfo;
-	}
-
-	public String getProductOption1() {
-		return productOption1;
-	}
-
-	public void setProductOption1(String productOption1) {
-		this.productOption1 = productOption1;
-	}
-
-	public String getProductOption2() {
-		return productOption2;
-	}
-
-	public void setProductOption2(String productOption2) {
-		this.productOption2 = productOption2;
 	}
 
 	public int getProductStock() {
