@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Command;
 
-public class Qna implements Command {
+public class QnaList implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 

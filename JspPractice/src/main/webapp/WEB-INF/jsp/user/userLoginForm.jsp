@@ -29,8 +29,8 @@
 			<div>
 			<table>
 				<tr>
-				<th>ID : <input type="text" id = "userId" name="userId"></th>
-				<th>PW : <input type="text" id = "userPw" name="userPw"></th>
+				<th>ID : <input type="text" id = "userId" name="userId" placeholder="id"></th>
+				<th>PW : <input type="text" id = "userPw" name="userPw" placeholder="pw"></th>
 				</tr>
 			</table>
 			</div><br>
@@ -39,7 +39,7 @@
 				
 				<button type="button" onclick="">id찾기</button> 
 				<button type="button" onclick="">pw찾기</button>
-				<button type="button" onclick="location.href='memberJoinForm.jsp'">회원가입</button>
+				<button type="button" onclick="location.href='user/userSignUpForm.jsp'">회원가입</button>
 			</div>
 		</form>
 	</div>

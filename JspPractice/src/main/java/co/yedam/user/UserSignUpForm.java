@@ -10,7 +10,7 @@ public class UserSignUpForm implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		
 		String id = request.getParameter("userId");
 		String pw = request.getParameter("userPw");
@@ -32,10 +32,12 @@ public class UserSignUpForm implements Command{
 		user.setUserAddress(address);
 		
 		//인터페이스 생성해야함
-		UserServiceImpl service = new UserServiceImpl();
+		UserService service = new UserServiceImpl();
 		service.insertUser(user);
 		
+		request.setAttribute("user",user);
+		
 
-		return "UserSignUpForm.jsp";
+		return "user/userSignUpForm.do";
 	}
 }

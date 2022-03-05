@@ -9,6 +9,5 @@
 </head>
 <body>
 	<img src="images/product/1.jpg" alt="product 1">
-
 </body>
 </html>
