@@ -2,10 +2,17 @@
     pageEncoding="UTF-8"%>
 <div>
     <h1>sidebar</h1>
-    <a href="productInsert.do"><p>productInsertForm.do</p></a>
-    <a href="productList.do"><p>productList.do</p></a>
-    <a href="productUpdate.do"><p>productUpdate</p></a>
-    <a href="productDetail.do"><p>productDetail</p></a>
-    <a href="mypageCheck.do"><p>mypageCheck.do</p></a>
-    <a href="qna.do"><p>qna.do</p></a>
+    
+    <p><a href="userLoginForm.do">userLoginForm.do</a></p>
+    <p><a href="userSignupForm.do">userSignupForm.do</a></p>
+    <p><a href="userInfo.do">userInfo.do</a></p>
+    <p><a href="userList.do">userList.do</a></p>
+    <p><a href="productInsertForm.do">productInsertForm.do</a></p>
+    <p><a href="productList.do">productList.do</a></p>
+    <p><a href="productUpdate.do">productUpdate</a></p>
+    <p><a href="productDetail.do">productDetail</a></p>
+    <p><a href="mypageCheck.do">mypageCheck.do</a></p>
+    <p><a href="qnaList.do">qnaList.do</a></p>
+    <p><a href="qnaDetail.do">qnaDetail.do</a></p>
+    <p><a href="qnaForm.do">qnaForm.do</a></p>
 </div>
