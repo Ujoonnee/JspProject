@@ -7,6 +7,8 @@
 <title>qnaForm.jsp</title>
 </head>
 <body>
-
+	<table>
+		<tr></tr>
+	</table>
 </body>
 </html>

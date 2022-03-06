@@ -17,13 +17,13 @@ public class UserLoginForm implements Command {
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPw(request.getParameter("userPw"));
 		vo= dao.pwCheck(vo);
-		if(vo.getUserId() != null) {
-			session.setAttribute("id", vo.getUserId());  
-			//로그인 성공 경로 정해줘야함
-			return "main/main.jsp";
-		} else {
-			//로그인 실패 경로 정해줘야함 
-			return "user/userLoginFail.jsp";
-		}
+		session.setAttribute("id", vo.getUserId());  
+		return "user/userLoginForm.jsp";
+//		if(vo.getUserId() != null) {
+//			//로그인 성공 경로 정해줘야함
+//		} else {
+//			//로그인 실패 경로 정해줘야함 
+//			return "user/userLoginFail.jsp";
+//		}
 	}
 }
