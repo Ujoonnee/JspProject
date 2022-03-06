@@ -7,6 +7,6 @@
 <title>productDetail.jsp</title>
 </head>
 <body>
-
+	<h1>productDetail.jsp</h1>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +11,34 @@
 	<div>
 		<table class="table" border="1">
 		
-			<tr>
-				<th align="center" colspan="2">${productList.productThumbnail}</th>
-			</tr>
-			<c:forEach var="product" items="${list}">
-				<tr>
-					<td align="center">${product.productThumbnail}</td>
-					<td align="center">${product.productName}</td>
-					<td align="center">${product.productPrice}</td>
+			
+			
+			<c:forEach var="list" items="${productList}">
+			
+				<thead>
+				
+				 <tr style = "cursor:pointer;" onClick = " location.href='productDetail.do' " onMouseOver = " indow.status = 'http://ihouse.so.vc' " onMouseOut = " window.status = '' " >
+
+
+
+					<th align="center" colspan="2">${list.productThumbnail}</th>
+					
 				</tr>
+			
+				</thead>
+				
+				<tbody>
+				<tr>
+					<td align="center">${list.productName}</td>
+					<td align="center">${list.productPrice}</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><input type="text" name="serial" value="${list.productSerial}"><td>
+				</tr>
+				</tbody>
 			</c:forEach>
+		
+			
 			</table>
 	</div>
 </body>

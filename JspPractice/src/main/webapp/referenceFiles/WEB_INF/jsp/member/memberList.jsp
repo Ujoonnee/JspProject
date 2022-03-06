@@ -37,7 +37,7 @@
 			</tr>
 			<c:forEach var="member" items="${list }">
 				<tr>
-					<td align="center">${member.memberId }</td>
+					<td align="center">${member.memberId}</td>
 					<td align="center">${member.memberName }</td>
 					<td align="center">${member.memberPassword }</td>
 					<td align="center">${member.memberAddress }</td>
