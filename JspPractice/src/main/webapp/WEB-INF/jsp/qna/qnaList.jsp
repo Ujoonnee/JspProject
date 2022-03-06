@@ -7,6 +7,26 @@
 <title>qna.jsp</title>
 </head>
 <body>
-
+	<table border = "1">
+		<tr>
+			<th align = "left"> 1:1문의</th>
+		</tr>
+		<tr align = "center">
+			<th width = "20%">문의유형</th>
+			<th width = "20%">제목</th>
+			<th width = "20%">주문번호</th>
+			<th width = "20%">작성일</th>
+			<th width = "20%">처리상태</th>
+		</tr>
+		<c:foreach var="qna" items="${list }">
+		<tr align= "center">
+			<td width="20%">${qna.qnaType }</td>
+			<td width="20%">${qna.qnaTitle }</td>
+			<td width="20%">${qna.orderNum }</td>
+			<td width="20%">${qna.qnaDate }</td>
+			<td width="20%">${qna.qnaStatus }</td>
+		</tr>
+		</c:foreach>
+	</table>
 </body>
 </html>

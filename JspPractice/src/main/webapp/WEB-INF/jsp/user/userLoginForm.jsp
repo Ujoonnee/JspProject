@@ -20,26 +20,36 @@
 		
 		frm.submit();
 	}
-</script>
 </head>
 <body>
+</script>
 <div align="center">
 	<div>
 		<form id="frm" name="frm" action="userLogin.jsp" method="post">
 			<div>
 			<table>
 				<tr>
-				<th>ID : <input type="text" id = "userId" name="userId" placeholder="id"></th>
-				<th>PW : <input type="text" id = "userPw" name="userPw" placeholder="pw"></th>
+				<th><input type="text" id = "userId" name="userId" placeholder="id"></th>
+				</tr>
+				<tr>
+				<th><input type="text" id = "userPw" name="userPw" placeholder="pw"></th>
 				</tr>
 			</table>
 			</div><br>
 			<div>
-				<button type="button" onclick="formCheck()">로그인</button>
+				<tr>
+				<th width= "400"><button type="button" onclick="formCheck()">로그인</button></th>
+				</tr>
+				<br>
+				<tr>
 				
-				<button type="button" onclick="">id찾기</button> 
-				<button type="button" onclick="">pw찾기</button>
-				<button type="button" onclick="location.href='user/userSignUpForm.jsp'">회원가입</button>
+				<th width = "200"><button type="button" onclick="location.href='#'">id찾기</button></th>
+				<th width = "200"><button type="button" onclick="location.href='#'">pw찾기</button></th>
+				</tr>
+				<br>
+				<tr>
+				<th width = "400"><button type="button" onclick="location.href='user/userSignUpForm.jsp'">회원가입</button></th>
+				</tr>
 			</div>
 		</form>
 	</div>
