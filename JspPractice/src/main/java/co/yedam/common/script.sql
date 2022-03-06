@@ -75,7 +75,7 @@ create table qna (
     qna_photo           varchar2(200),
     qna_status          varchar2(20),
     response_date       date,
-    constraint fk_qna_user_num foreign key(user_id) references users(user_id),
+    constraint fk_qna_user_id foreign key(user_id) references users(user_id),
     constraint fk_qna_order_num foreign key(order_num) references orders(order_num)
 );
 
