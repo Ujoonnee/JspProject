@@ -9,21 +9,7 @@ public class UserLoginForm implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		
-		UserServiceImpl dao = new UserServiceImpl();
-		UserVO vo = new UserVO();
-		
-		vo.setUserId(request.getParameter("userId"));
-		vo.setUserPw(request.getParameter("userPw"));
-		vo= dao.pwCheck(vo);
-		session.setAttribute("id", vo.getUserId());  
+	
 		return "user/userLoginForm.jsp";
-//		if(vo.getUserId() != null) {
-//			//로그인 성공 경로 정해줘야함
-//		} else {
-//			//로그인 실패 경로 정해줘야함 
-//			return "user/userLoginFail.jsp";
-//		}
 	}
 }

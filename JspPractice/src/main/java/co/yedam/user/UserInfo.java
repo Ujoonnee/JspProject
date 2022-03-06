@@ -20,7 +20,7 @@ public class UserInfo implements Command {
 		request.setAttribute("user", user);
 		
 		
-		return "UserInfo.jsp";
+		return "userInfo.jsp";
 	}
 }
 	
