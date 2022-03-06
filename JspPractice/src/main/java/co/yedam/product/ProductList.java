@@ -15,11 +15,11 @@ public class ProductList implements Command {
 		
 		request.setAttribute("productList",productList);
 		
-		List<ProductVO> list = (List<ProductVO>) request.getAttribute("productList");
+		/*List<ProductVO> list = (List<ProductVO>) request.getAttribute("productList");
 		for (ProductVO slist : list) {
 			System.out.println(slist.getProductName());
 			System.out.println(slist.getProductPrice());
-		}
+		}*/
 		return "product/productList.jsp";
 	}
 }

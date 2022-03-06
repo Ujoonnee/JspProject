@@ -51,6 +51,7 @@ public class ProductServiceImpl extends DAO implements ProductService{
 			
 			if (rs.next()) {
 				vo.setProductSerial(rs.getInt("product_serial"));
+				vo.setProductName(rs.getString("product_Name"));				
 				vo.setProductCategory1(rs.getString("product_category1"));
 				vo.setProductCategory2(rs.getString("product_category2"));
 				vo.setProductThumbnail(rs.getString("product_thumbnail"));

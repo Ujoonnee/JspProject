@@ -35,7 +35,7 @@ create table shipping_address (
     is_defalut          number(1) default 0,
     phone_number        varchar2(20) not null,
     shipping_address    varchar2(100) not null,
-   constraint fk_shipping_address_user_num foreign key(user_num) references users(user_num)
+   constraint fk_shipping_address_user_id foreign key(user_id) references users(user_id)
 );
 
 create table products(
@@ -75,7 +75,7 @@ create table qna (
     qna_photo           varchar2(200),
     qna_status          varchar2(20),
     response_date       date,
-    constraint fk_qna_user_num foreign key(user_num) references users(user_num),
+    constraint fk_qna_user_id foreign key(user_id) references users(user_id),
     constraint fk_qna_order_num foreign key(order_num) references orders(order_num)
 );
 
@@ -84,6 +84,6 @@ create table shipping (
      shipping_address   varchar2(100),
      recipient_name     varchar2(100),
      phone_number       varchar2(20),
-     comment            varchar2(100),
+     shipping_comment            varchar2(100),
      constraint fk_shipping_order_num foreign key(order_num) references orders(order_num)
 );
