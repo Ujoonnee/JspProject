@@ -29,7 +29,9 @@ import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
+import co.yedam.user.UserLogin;
 import co.yedam.user.UserLoginForm;
+import co.yedam.user.UserSignUp;
 import co.yedam.user.UserSignUpForm;
 
 
@@ -50,6 +52,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userLoginForm.do", new UserLoginForm()); // 2 로그인 폼 호출
 		map.put("/userLogin.do", new UserLogin()); // 2 로그인 처리
 		map.put("/userSignUpForm.do", new UserSignUpForm()); // 3 회원가입 폼 호출
+		map.put("/userSignUp.do", new UserSignUp()); // 3 회원가입 폼 호출
 		
 		// admin pages
 		map.put("/userList.do", new UserList()); //4 회원리스트(관리자)
@@ -82,11 +85,11 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String path = uri.substring(contextPath.length());
+		System.out.println(path);
 
 		Command command = map.get(path);
 		String viewPage = command.execute(request, response);
 		
-		System.out.println("FrontController : " + viewPage);
 		
 		if (viewPage != null) {
 			// ajax 응답
@@ -100,7 +103,6 @@ public class FrontController extends HttpServlet {
 			if (viewPage.endsWith(".jsp"))
 				viewPage = "WEB-INF/jsp/" + viewPage;
 
-			System.out.println("view resolve : " + viewPage);
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}

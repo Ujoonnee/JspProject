@@ -55,6 +55,7 @@ public class UserServiceImpl extends DAO implements UserService {
          rs = psmt.executeQuery();
          
          if (rs.next()) {
+        	vo.setUserNum(rs.getInt("user_num"));
             vo.setUserId(rs.getString("user_id"));
             vo.setUserPw(rs.getString("user_pw"));
             vo.setUserName(rs.getString("user_name"));
@@ -78,14 +79,24 @@ public class UserServiceImpl extends DAO implements UserService {
    
    @Override
    public UserVO pwCheck(UserVO vo) {
-	   String sql = "select user_id, user_pw from users where user_id =?";
+	   String sql = "select * from users where user_id = ? AND user_pw = ?";
 	   try{
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUserPw());
+			psmt.setString(1, vo.getUserId());
+			psmt.setString(2, vo.getUserPw());
 			rs = psmt.executeQuery();
+			
 			if(rs.next()) {
-				vo.setUserId(rs.getString("user_id"));
-				vo.setUserPw(rs.getString("user_pw"));
+				vo.setUserNum(rs.getInt("user_num"));
+	            vo.setUserId(rs.getString("user_id"));
+	            vo.setUserPw(rs.getString("user_pw"));
+	            vo.setUserName(rs.getString("user_name"));
+	            vo.setUserDob(rs.getString("user_dob"));
+	            vo.setUserSignupDate(rs.getString("user_signup_date"));
+	            vo.setUserTel(rs.getString("user_tel"));
+	            vo.setUserEmail(rs.getString("user_email"));
+	            vo.setUserAddress(rs.getString("user_address"));
+	            vo.setUserAuthority(rs.getString("user_authority"));
 			}
 	   } catch(SQLException e) {
 		   e.printStackTrace();
