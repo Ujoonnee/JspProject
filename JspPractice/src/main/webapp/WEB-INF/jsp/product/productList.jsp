@@ -14,15 +14,10 @@
 			
 			
 			<c:forEach var="list" items="${productList}">
-			
+				<div><a href="productDetail.do?productSerial=${list.productSerial}">${list.productSerial}</a></div>
 				<thead>
-				
-				 <tr style = "cursor:pointer;" onClick = " location.href='productDetail.do' " onMouseOver = " indow.status = 'http://ihouse.so.vc' " onMouseOut = " window.status = '' " >
-
-
-
-					<th align="center" colspan="2">${list.productThumbnail}</th>
-					
+				 <tr>
+					<th align="center" colspan="2" >${list.productThumbnail}</th>
 				</tr>
 			
 				</thead>
@@ -31,9 +26,6 @@
 				<tr>
 					<td align="center">${list.productName}</td>
 					<td align="center">${list.productPrice}</td>
-				</tr>
-				<tr>
-					<td align="center" colspan="2"><input type="text" name="serial" value="${list.productSerial}"><td>
 				</tr>
 				</tbody>
 			</c:forEach>

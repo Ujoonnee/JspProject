@@ -10,7 +10,7 @@
 		<div align="center">
 	<div><h1>상품 등록하기</h1></div>
 	<div>
-		<form id="frm" name="frm" action="productInsertForm.do" method="post">
+		<form id="frm" name="frm" action="productInsert.do" method="post">
 			<div>사진<input type="text" id="productThumbnail" name="productThumbnail" ></div>
 			<div>상품명<input type="text" id="productName" name="productName" ></div>
 			<select id="productCategory1" name="productCategory1" >

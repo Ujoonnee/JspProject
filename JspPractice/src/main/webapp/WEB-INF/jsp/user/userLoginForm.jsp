@@ -25,7 +25,7 @@
 </script>
 <div align="center">
 	<div>
-		<form id="frm" name="frm" action="userLogin.jsp" method="post">
+		<form id="frm" name="frm" action="userLogin.do" method="post">
 			<div>
 			<table>
 				<tr>
@@ -48,7 +48,7 @@
 				</tr>
 				<br>
 				<tr>
-				<th width = "400"><button type="button" onclick="location.href='user/userSignUpForm.jsp'">회원가입</button></th>
+				<th width = "400"><button type="button" onclick="location.href='user/userSignUpForm.do'">회원가입</button></th>
 				</tr>
 			</div>
 		</form>

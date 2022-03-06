@@ -15,7 +15,7 @@
 	<div id="st">
 		<b>회원가입</b>
 		
-		<form>
+		<form id="frm" name="frm" action="userSignUpForm.do" method="post">
 			<table>
 				<tr>
 					<td><input type="text" id = "userId" name="userId" placeholder="*id" >
@@ -45,7 +45,8 @@
 			</table>
 			<input type="checkbox" name="item"> 나는 동의한다.
 			<br><br>
-			<input type="reset" value ="취소">&nbsp;&nbsp;<input type = "submit" value ="회원가입">
+			<input type="reset" value ="취소">&nbsp;&nbsp;
+			<input type = "submit" value ="회원가입">
 			
 			
 		</form>

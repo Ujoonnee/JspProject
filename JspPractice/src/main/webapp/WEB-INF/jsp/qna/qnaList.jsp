@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 			<th width = "20%">작성일</th>
 			<th width = "20%">처리상태</th>
 		</tr>
-		<c:foreach var="qna" items="${list }">
+		<c:forEach var="qna" items="${list }">
 		<tr align= "center">
 			<td width="20%">${qna.qnaType }</td>
 			<td width="20%">${qna.qnaTitle }</td>
@@ -26,7 +27,7 @@
 			<td width="20%">${qna.qnaDate }</td>
 			<td width="20%">${qna.qnaStatus }</td>
 		</tr>
-		</c:foreach>
+		</c:forEach>
 	</table>
 </body>
 </html>
