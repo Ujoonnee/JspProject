@@ -13,8 +13,13 @@ public class ProductList implements Command {
 		ProductServiceImpl service = new ProductServiceImpl();
 		List<ProductVO> productList = service.selectProductList();
 		
-		request.setAttribute("list",productList);
+		request.setAttribute("productList",productList);
 		
+		List<ProductVO> list = (List<ProductVO>) request.getAttribute("productList");
+		for (ProductVO slist : list) {
+			System.out.println(slist.getProductName());
+			System.out.println(slist.getProductPrice());
+		}
 		return "product/productList.jsp";
 	}
 }
