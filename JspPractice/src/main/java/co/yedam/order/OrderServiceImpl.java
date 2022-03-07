@@ -14,7 +14,8 @@ public class OrderServiceImpl extends DAO implements OrderService {
 
 	@Override
 	public List<OrderVO> selectOrderList() {
-		String sql = "SELECT * FROM ORDERS ORDER BY 1";
+		//String sql = "SELECT * FROM ORDERS ORDER BY 1";
+		String sql = "SELECT o.order_num, p.product_name, o.user_id, u.user_name, o.order_date  FROM products p,orders o, users u WHERE p.product_serial = o.product_serial AND o.user_id = u.user_id";
 		List<OrderVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -22,10 +23,12 @@ public class OrderServiceImpl extends DAO implements OrderService {
 			while (rs.next()) {
 				OrderVO vo = new OrderVO();
 				vo.setOrderNum(rs.getString("order_num"));
+				vo.setProductName(rs.getString("product_name"));
 				vo.setUserId(rs.getString("user_id"));
-				vo.setProductSerial(rs.getInt("product_serial"));
-				vo.setProductQuantity(rs.getInt("product_quantity"));
+				vo.setUserName(rs.getString("user_name"));
 				vo.setOrderDate(rs.getString("order_date"));
+				
+				list.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
