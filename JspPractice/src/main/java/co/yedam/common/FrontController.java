@@ -65,7 +65,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myPageCheck.do", new MyPageCheck()); //7 마이페이지(회원정보 수정 - 비밀번호 확인)	
 		map.put("/myPageUpdate.do", new MyPageUpdate()); 	//8 마이페이지(회원정보 수정)
 
-		map.put("/purchaseInfo.do", new PurchaseInfo()); //9 마이페이지(구매내역)	
+		map.put("/purchaseInfo.do", new PurchaseInfo()); //9 결제정보	
 		map.put("/purchaseHistory.do", new PurchaseHistory()); //9 마이페이지(구매내역)	
 		map.put("/purchaseHistoryDetail.do", new PurchaseHistoryDetail()); //10 마이페이지(구매내역 상세)
 		
