@@ -1,17 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<div>
-    <h1>sidebar</h1>
-
-    <p><a href="userLoginForm.do">userLoginForm.do</a></p>
-    <p><a href="userSignUpForm.do">userSignUpForm.do</a></p>
-    <p><a href="userList.do">userList.do</a></p>
-    <p><a href="productInsertForm.do">productInsertForm.do</a></p>
-    <p><a href="productList.do">productList.do</a></p>
-    <p><a href="productUpdate.do">productUpdate</a></p>
-    <p><a href="productDetail.do">productDetail</a></p>
-    <p><a href="mypageCheck.do">mypageCheck.do</a></p>
-    <p><a href="qnaList.do">qnaList.do</a></p>
-    <p><a href="qnaDetail.do">qnaDetail.do</a></p>
-    <p><a href="qnaForm.do">qnaForm.do</a></p>
-</div>
+	pageEncoding="UTF-8"%>
+<nav class="amado-nav">
+	<ul>
+	<!-- 
+		<li><a href="#" class="search-nav"><img
+				src="img/core-img/search.png" alt=""> Search</a></li>
+		<li>&nbsp;</li>
+		 -->
+		<li><h2>Category</h2></li>
+		<li>&nbsp;</li>
+		<li><h4>상의</h4></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류1</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류2</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류3</a></li>
+		<li>──────────────</li>
+		<li>&nbsp;</li>
+		<li><h4>하의</h4></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류1</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류2</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류3</a></li>
+		<li>──────────────</li>
+		<li>&nbsp;</li>
+		<li><h4>아우터</h4></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류1</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류2</a></li>
+		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류3</a></li>
+		<li>&nbsp;</li>
+		<li>&nbsp;</li>
+	</ul>
+</nav>
