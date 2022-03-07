@@ -32,9 +32,10 @@ create sequence order_num_seq;
 
 create table shipping_address (
     user_id             varchar2(20) primary key,
-    is_defalut          number(1) default 0,
-    phone_number        varchar2(20) not null,
-    shipping_address    varchar2(100) not null,
+	shipping_address   varchar2(100) not null,
+    recipient_name     varchar2(100),
+    phone_number       varchar2(20) not null,
+    shipping_comment            varchar2(100)
    constraint fk_shipping_address_user_id foreign key(user_id) references users(user_id)
 );
 

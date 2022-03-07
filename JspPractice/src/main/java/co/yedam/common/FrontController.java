@@ -29,6 +29,7 @@ import co.yedam.purchase.PurchaseInfo;
 import co.yedam.qna.QnaDetail;
 import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
+import co.yedam.user.QnaUserInsert;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
 import co.yedam.user.UserLogin;
@@ -73,8 +74,9 @@ public class FrontController extends HttpServlet {
 		map.put("/addCart.do", new AddCart()); //11 마이페이지(장바구니)
 		
 		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
-		map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
-		map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
+	    map.put("/qnaUserInsert.do", new QnaUserInsert()); //12 마이페이지(1:1문의)
+	    map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
+	    map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
 
 		// product pages
         map.put("/productList.do", new ProductList()); //15 상품 목록
