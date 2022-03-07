@@ -66,7 +66,7 @@ public class CartServiceImpl extends DAO implements CartService {
 	
 	@Override
 	public int insertCart(CartVO vo) {
-		String sql = "INSERT INTO cart VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO cart VALUES(?,?,?,?,sysdate)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -74,7 +74,6 @@ public class CartServiceImpl extends DAO implements CartService {
 			psmt.setInt(2, vo.getProductSerial());
 			psmt.setInt(3, vo.getProductQuantity());
 			psmt.setInt(4, vo.getProductPrice());
-			psmt.setString(5, vo.getCartDate());
 			
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 입력되었습니다.");
@@ -89,15 +88,15 @@ public class CartServiceImpl extends DAO implements CartService {
 	
 	@Override
 	public int updateCart(CartVO vo) {
-		String sql = "UPDATE cart SET product_serial = ?, product_quantity, product_price = ?, cart_date = ? WHERE user_id = ?";
+		String sql = "UPDATE cart SET product_serial = ?, product_quantity, product_price = ?, cart_date = sysdate WHERE user_id = ?";
 		
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, vo.getProductSerial());
-			psmt.setInt(1, vo.getProductQuantity());
-			psmt.setInt(2, vo.getProductPrice());
-			psmt.setString(3, vo.getCartDate());
+			psmt.setInt(2, vo.getProductQuantity());
+			psmt.setInt(3, vo.getProductPrice());
+			psmt.setString(4, vo.getCartDate());
 			psmt.setString(5, vo.getUserId());
 			
 			r = psmt.executeUpdate();
@@ -118,7 +117,7 @@ public class CartServiceImpl extends DAO implements CartService {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getUserId());
-			psmt.setInt(1, vo.getProductSerial());
+			psmt.setInt(2, vo.getProductSerial());
 			
 			System.out.println(r + "건이 삭제되었습니다.");
 			

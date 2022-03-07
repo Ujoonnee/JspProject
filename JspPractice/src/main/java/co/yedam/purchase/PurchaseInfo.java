@@ -1,13 +1,12 @@
-package co.yedam.cart;
+package co.yedam.purchase;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Command;
 
-public class Cart implements Command {
+public class PurchaseInfo implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "cart/cart.jsp";
+		return "PurchaseHistory.tiles";
 	}
 }

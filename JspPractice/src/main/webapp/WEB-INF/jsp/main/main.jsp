@@ -49,6 +49,8 @@
 	</div>
 	<!-- Search Wrapper Area End -->
 
+	<jsp:include page="../layout/head.jsp"></jsp:include>
+
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 
@@ -56,7 +58,7 @@
 		<div class="mobile-nav">
 			<!-- Navbar Brand -->
 			<div class="amado-navbar-brand">
-				<a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+				<a href="main.do"><img src="img/core-img/logo.png" alt=""></a>
 			</div>
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
@@ -70,10 +72,7 @@
 			<div class="nav-close">
 				<i class="fa fa-close" aria-hidden="true"></i>
 			</div>
-			<!-- Logo -->
-			<div class="logo">
-				<a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
-			</div>
+
 			<!-- Amado Nav -->
 			<jsp:include page="../layout/nav.jsp"></jsp:include>
 			<!-- Button Group -->
@@ -83,7 +82,7 @@
 			</div>
 			<!-- Cart Menu -->
 			<div class="cart-fav-search mb-100">
-				<a href="cart.html" class="cart-nav"><img
+				<a href="cart.do" class="cart-nav"><img
 					src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a> <a
 					href="#" class="fav-nav"><img src="img/core-img/favorites.png"
 					alt=""> Favourite</a> <a href="#" class="search-nav"><img
@@ -255,7 +254,7 @@
 					<div class="single_widget_area">
 						<!-- Logo -->
 						<div class="footer-logo mr-50">
-							<a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+							<a href="main.do"><img src="img/core-img/logo2.png" alt=""></a>
 						</div>
 						<!-- Copywrite Text -->
 						<p class="copywrite">
@@ -289,12 +288,12 @@
 								<div class="collapse navbar-collapse" id="footerNavContent">
 									<ul class="navbar-nav ml-auto">
 										<li class="nav-item active"><a class="nav-link"
-											href="index.html">Home</a></li>
+											href="main.do">Home</a></li>
 										<li class="nav-item"><a class="nav-link" href="shop.html">Shop</a>
 										</li>
 										<li class="nav-item"><a class="nav-link"
 											href="product-details.html">Product</a></li>
-										<li class="nav-item"><a class="nav-link" href="cart.html">Cart</a>
+										<li class="nav-item"><a class="nav-link" href="cart.do">Cart</a>
 										</li>
 										<li class="nav-item"><a class="nav-link"
 											href="checkout.html">Checkout</a></li>
