@@ -9,13 +9,13 @@ import co.yedam.common.Command;
 public class UserList implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
 		//관리자 
 		UserServiceImpl service = new UserServiceImpl();
 		List<UserVO> list = service.selectUserList();
 		
+		System.out.println("userListpage");
 		request.setAttribute("list", list);
 		
-		return "userList.jsp";
+		return "user/userList.jsp";
 	}
 }

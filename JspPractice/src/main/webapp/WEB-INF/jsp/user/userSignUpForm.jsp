@@ -17,7 +17,7 @@
 	<div id="st">
 		<b>회원가입</b>
 
-		<form id="frm" name="frm" onsubmit="frmChk()" action="userSignUp.do" method="post">
+		<form id="frm" name="frm" action="userSignUp.do" method="post">	
 			<table align="center">
 				<tr>
 					<td><input type="text" id="userId" name="userId"
@@ -25,11 +25,11 @@
 						type="button" id="idchk" value="중복체크" data-checked="false"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userPw" name="userPw"
+					<td><input type="text" id="userPw1" name="userPw1"
 						placeholder="*pw" required></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userPw1" name="userPw1"
+					<td><input type="text" id="userPw2" name="userPw2"
 						placeholder="*pw확인" required></td>
 				</tr>
 				<tr>
@@ -37,7 +37,7 @@
 						placeholder="*이름" required></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userBod" name="userBod"
+					<td><input type="text" id="userDob" name="userDob"
 						placeholder="생년월일"></td>
 				</tr>
 				<tr>
@@ -45,7 +45,7 @@
 						placeholder="전화번호"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userEamil" name="userEmail"
+					<td><input type="text" id="userEmail" name="userEmail"
 						placeholder="*이메일" required></td>
 				</tr>
 				<tr>
@@ -53,7 +53,7 @@
 						placeholder="주소"></td>
 				</tr>
 			</table>
-			<input type="checkbox" id="consent" name="consent"> 나는 동의한다. <br> <br>
+			<input type="checkbox" id="consent" name="consent" value='1'> 나는 동의한다. <br> <br>
 			<input type="reset" value="취소">&nbsp;&nbsp; <input
 				type="button" id="signup" value="회원가입">
 		</form>
@@ -78,15 +78,32 @@
 		
 		
 		// submit 직전 전체 체크
-// 		function frmChk() {
-// 			event.preventDefault();
-// 			if (idchk.data.checked != 'true')
-// 			if (userPw1 != userPw2)
-// 			if (consent.checked != true)
-// 			alert('회원가입 성공');
-// 		}
+ 		function frmChk() {
+ 			event.preventDefault();
+ 			
+ 			if (idchk.dataset.checked != 'true') {
+ 				alert('아이디 중복체크를 해주세요');
+ 				return;
+ 			}
+ 			
+ 			if (userPw1.value != userPw2.value) {
+ 				alert('비밀번호가 일치하지 않습니다');
+ 				return;
+ 			}
+ 			
+ 			if (consent.checked != true) {
+ 				alert('동의해 주세요');
+ 				return;
+ 			}
+ 			alert('회원가입 성공');
+ 			frm.submit();
+ 			
+ 		}
 		
-// 		signup.addEventListener('click', frmChk);
+ 		signup.addEventListener('click', frmChk);
+ 	
+ 		
+ 		
 	</script>
 </body>
 </html>
