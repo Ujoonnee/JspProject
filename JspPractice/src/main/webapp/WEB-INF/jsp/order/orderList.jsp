@@ -8,7 +8,18 @@
 <title>주문목록</title>
 </head>
 <body>
-	<div>
+	<div style="border: solid 1px black; display: inline-block;">
+		<select>
+			<option></option>
+			<option></option>
+			<option></option>
+			<option></option>
+			<option></option>
+		</select>
+	</div>
+	<input type="text" id="searchBox">
+	<div style="border: solid 1px black; display: inline-block;" id="searchBtn"><span>검색</span></div>
+ 	<div>
 		<table border="1">
 			<thead>
 				<tr>
@@ -20,17 +31,29 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="list" items="orderList">
+				<c:forEach var="list" items="${orderList }">
 				<tr>
 					<td>${list.orderNum}</td>
-					<td>${list.orderNum}</td>
+					<td>${list.productName}</td>
 					<td>${list.userId}</td>
-					<td>${list.orderNum}</td>
-					<td>${list.orderNum}</td>
+					<td>${list.userName}</td>
+					<td>${list.orderDate}</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<button type="button" onclick="location.href='main.do' ">MAIN</button>
 	</div>
+	
+	<script>
+		document.querySelector('#searchBtn').addEventListener('click', () => {
+			document.getElementsByTagName('tbody')[0].innerHTML = '';
+			
+			const list = ${orderList};
+			console.log(list);
+			
+			
+		})
+	</script>
 </body>
 </html>

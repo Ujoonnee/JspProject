@@ -6,6 +6,21 @@ public class OrderVO {
 	private int productSerial;
 	private int ProductQuantity;
 	private String orderDate;
+	//
+	private String userName;
+	private String productName;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 	
 	public String getOrderNum() {
 		return orderNum;
