@@ -19,15 +19,13 @@ public class QnaForm implements Command{
 		System.out.println("qnqFormdo");
 		UserVO user = (UserVO) session.getAttribute("user");
 		request.setAttribute("user", user);
-		
+
 		OrderService dao = new OrderServiceImpl();
 		OrderVO order = new OrderVO();
 		order.setUserId(user.getUserId());
 		List<OrderVO> list = dao.selectOrder(order);
-		
 		request.setAttribute("orderList", list);
-		
-		
+
 		return "qna/qnaForm.jsp";
 	}
 }

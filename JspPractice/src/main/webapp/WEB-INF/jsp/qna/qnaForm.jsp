@@ -43,7 +43,7 @@
 					<td><select name= "purchaseList" id="purchaseList" >
 						<option value="">선택하세요.</option>
 						<c:forEach var= "order" items = "${orderList }" >
-							<option value="${order.productSerial }">${order.productSerial }</option>
+							<option id = "product_serial" value="${order.productSerial }">${order.productSerial }</option>
 						</c:forEach>
 					</select></td>
 					<td>이메일</td>
@@ -60,9 +60,12 @@
 					<td>문의내용</td>
 					<td><textarea id="content" name="content"
 						placeholder="내용을 입력하세요." cols="50" rows="20"></textarea></td>
+						
 				</tr>
-
+			
 			</table>
+			<input type="hidden" id="qna_status" name="qna_status" value="답변대기">
+			<input type="hidden" id="user_id" name="user_id" value = "${user.userId }">
 			<button type='button' onclick="history.back()">뒤로가기</button>&nbsp;
 			<input type='reset' value='취소'>&nbsp;
 			<button type='button' id = "register">작성하기</button>

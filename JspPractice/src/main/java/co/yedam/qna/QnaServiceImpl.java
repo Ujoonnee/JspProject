@@ -4,9 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import co.yedam.common.DAO;
 
@@ -50,15 +48,17 @@ public class QnaServiceImpl extends DAO implements QnaService{
 	 }
 	 @Override
 	 public int insertQna(QnaVO vo) {
-		 String sql = "insert into qna(qna_type,order_num,qna_title,qna_content,qna_photo) values(?,?,?,?,?)";
+		 String sql = "insert into qna(user_id,qna_type,order_num,qna_title,qna_content,qna_photo,qna_status) values(?,?,?,?,?,?,?)";
 		 int r = 0;
 		 try {
 			 psmt = conn.prepareStatement(sql);
-			 psmt.setString(1,vo.getQnaType());
-			 psmt.setString(2,vo.getOrderNum());
-			 psmt.setString(3,vo.getQnaTitle());
-			 psmt.setString(4,vo.getQnaContent());
-			 psmt.setString(5,vo.getQnaPhoto());
+			 psmt.setString(1,vo.getUserId());
+			 psmt.setString(2,vo.getQnaType());
+			 psmt.setString(3,vo.getOrderNum());
+			 psmt.setString(4,vo.getQnaTitle());
+			 psmt.setString(5,vo.getQnaContent());
+			 psmt.setString(6,vo.getQnaPhoto());
+			 psmt.setString(7,vo.getQnaStatus());
 			 r=psmt.executeUpdate();
 			 System.out.println(r+"건 입력");
 		 }catch(SQLException e) {
@@ -70,6 +70,55 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		return r;
 		 
 	 }
+	 @Override
+	 public List<QnaVO> selectAllList(){
+		 String sql = "select * from qna";
+		 List<QnaVO> list = new ArrayList<>();
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 rs = psmt.executeQuery();
+			 
+			 while(rs.next()) {
+				 QnaVO qna = new QnaVO();
+				 qna.setUserId(rs.getString("user_id"));
+				 qna.setQnaType(rs.getString("qna_type"));
+				 qna.setOrderNum(rs.getString("order_num"));
+				 qna.setQnaDate(rs.getString("qna_date"));
+				 qna.setQnaTitle(rs.getString("qna_title"));
+				 qna.setQnaContent(rs.getString("qna_content"));
+				 qna.setQnaPhoto(rs.getString("qna_photo"));
+				 qna.setQnaStatus(rs.getString("qna_status"));
+				 qna.setResponseDate(rs.getString("response_date"));
+				 
+				 list.add(qna);
+			 }
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }finally {
+			 close();
+		 }
+		 return list;
+	 }
+//	 qna검색기능
+//	 public List<QnaVO> find(String type, String keyword)
+//	 throws SQLException{
+//		 try {
+//			 String colName="";
+//			 switch(type) {
+//			 	case "1" : colName="order_num";
+//			 	break;
+//			 	case "2" : colName="user_id";
+//			 	break;
+//			 }
+//			 conn =DBUtil.getCon();
+//			 
+//			 
+//			 return null;
+//		 }finally {
+//			 close();
+//		 }
+//	 }
+	 
 //	 public List<QnaVO> selectAdminQnaList(){
 //		 String sql = "select * from qna";
 //		 List<QnaVO> list = new ArrayList<>();

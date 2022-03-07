@@ -18,20 +18,22 @@ public class QnaUserInsert implements Command{
 		List<QnaVO> list = dao.selectQnaList(user.getUserId());
 		request.setAttribute("list",list);
 		
-		
+		String qnaUserId =request.getParameter("user_id");
 		String qnaType=request.getParameter("qna_type");
 		String orderNum =request.getParameter("order_num");
 		String qnaTitle =request.getParameter("title");
 		String qnaContent =request.getParameter("content");
 		String qnaPhoto =request.getParameter("qna_photo");
-		
+		String qnaStatus=request.getParameter("qna_status");
 		
 		QnaVO qna = new QnaVO();
+		qna.setUserId(qnaUserId);
 		qna.setQnaType(qnaType);
 		qna.setOrderNum(orderNum);
 		qna.setQnaTitle(qnaTitle);
 		qna.setQnaContent(qnaContent);
 		qna.setQnaPhoto(qnaPhoto);
+		qna.setQnaStatus(qnaStatus);
 		
 		
 		QnaService service= new QnaServiceImpl();
