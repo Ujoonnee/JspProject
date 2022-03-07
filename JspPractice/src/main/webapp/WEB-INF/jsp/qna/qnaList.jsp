@@ -8,8 +8,6 @@
 <title>qna.jsp</title>
 </head>
 <body>
-
-
 	<table border = "1">
 		<tr>
 			<th align = "left"> 1:1문의</th>
@@ -32,6 +30,7 @@
 		</c:forEach>
 		
 	</table>
+		<input type="button" onclick = "location.href='main.do'" value= "main">
 		<input type="button" onclick = "location.href='qnaForm.do'"value="1:1문의하기">
 </form>
 	
