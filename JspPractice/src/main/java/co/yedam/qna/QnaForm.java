@@ -16,6 +16,6 @@ public class QnaForm implements Command{
 		request.setAttribute("list",list);
 		
 		
-		return "QnaForm.jsp";
+		return "qna/qnaForm.jsp";
 	}
 }

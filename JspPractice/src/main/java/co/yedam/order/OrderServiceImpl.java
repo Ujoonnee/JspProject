@@ -8,31 +8,33 @@ import java.util.List;
 
 import co.yedam.common.DAO;
 
-public class OrderServiceImpl extends DAO implements OrderService{
+public class OrderServiceImpl extends DAO implements OrderService {
 	PreparedStatement psmt;
 	ResultSet rs;
+
 	@Override
-	public List<OrderVO> selectOrderList(){
+	public List<OrderVO> selectOrderList() {
 		String sql = "SELECT * FROM ORDERS ORDER BY 1";
 		List<OrderVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
-			while(rs.next()) {
-			OrderVO vo = new OrderVO();
-			vo.setOrderNum(rs.getString("order_num"));
-			vo.setUserId(rs.getString("user_id"));
-			vo.setProductSerial(rs.getInt("product_serial"));
-			vo.setProductQuantity(rs.getInt("product_quantity"));
-			vo.setOrderDate(rs.getString("order_date"));
+			while (rs.next()) {
+				OrderVO vo = new OrderVO();
+				vo.setOrderNum(rs.getString("order_num"));
+				vo.setUserId(rs.getString("user_id"));
+				vo.setProductSerial(rs.getInt("product_serial"));
+				vo.setProductQuantity(rs.getInt("product_quantity"));
+				vo.setOrderDate(rs.getString("order_date"));
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return list;
 	}
+
 	@Override
 	public List<OrderVO> selectOrder(OrderVO vo) {
 		String sql = "SELECT * FROM ORDERS WHERE USER_ID = ?";
@@ -41,8 +43,8 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
-			while(rs.next()) {
-				
+			while (rs.next()) {
+
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
 				order.setUserId(rs.getString("user_id"));
@@ -58,6 +60,7 @@ public class OrderServiceImpl extends DAO implements OrderService{
 		}
 		return list;
 	}
+
 	@Override
 	public int insertOrder(OrderVO vo) {
 		String sql = "INSERT INTO ORDERS VALUES(?,?,?,?,?)";
@@ -71,14 +74,14 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			psmt.setString(5, vo.getOrderDate());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 입력되었습니다.");
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return r;
 	}
-	
+
 	@Override
 	public int deleteOrder(OrderVO vo) {
 		String sql = "DELETE FROM ORDERS WHERE ORDER_NUM = ?";
@@ -88,13 +91,14 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			psmt.setString(1, vo.getOrderNum());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 삭제되었습니다.");
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return r;
 	}
+
 	@Override
 	public int updateOrder(OrderVO vo) {
 		String sql = "UPDATE ORDERS USER_ID=?,PRODUCT_SERIAL=?,PRODUCT_QUANTITY=?,ORDER_DATE=?  SET WHERE ORDER_NUM=?";
@@ -108,23 +112,24 @@ public class OrderServiceImpl extends DAO implements OrderService{
 			psmt.setString(5, vo.getOrderNum());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 수정되었습니다.");
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 		}
 		return r;
 	}
+
 	private void close() {
-	      try {
-	         if (rs != null)
-	            rs.close();
-	         if (psmt != null)
-	            psmt.close();
-	         if (conn != null)
-	            conn.close();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-	   }
+		try {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

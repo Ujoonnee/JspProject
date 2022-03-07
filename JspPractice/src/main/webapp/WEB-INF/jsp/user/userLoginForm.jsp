@@ -28,7 +28,7 @@
 	<div>
 		<form id="frm" name="frm" action="userLogin.do" method="post">
 			<div>
-				<table border="1">
+				<table>
 					<tr>
 						<th><input type="text" id="userId" name="userId"
 							placeholder="id"></th>
@@ -41,9 +41,9 @@
 			</div>
 			<br>
 			<div>
-				<table border="1">
+				<table>
 					<tr>
-						<th width="400" colspan="2"><button type="button" onclick="formCheck()">로그인</button></th>
+						<th width="600" colspan="2"><button type="button" onclick="formCheck()">로그인</button></th>
 					</tr>
 					<tr>
 
@@ -53,7 +53,7 @@
 								onclick="location.href='#'">pw찾기</button></th>
 					</tr>
 					<tr>
-						<th width="400" colspan="2"><button type="button"
+						<th width="600" colspan="2"><button type="button"
 								onclick="location.href='userSignUpForm.do'">회원가입</button></th>
 					</tr>
 				</table>

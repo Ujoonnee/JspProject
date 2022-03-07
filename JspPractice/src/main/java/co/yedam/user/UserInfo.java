@@ -13,14 +13,14 @@ public class UserInfo implements Command {
 		UserServiceImpl dao = new UserServiceImpl();
 		UserVO user = new UserVO();
 		
-		user.setUserNum(Integer.parseInt(request.getParameter("user_num")));
+		user.setUserId(request.getParameter("selectedUser"));
 		user = dao.selectUser(user);
 		
 		//key 값 list
 		request.setAttribute("user", user);
+		System.out.println("userInfoPage");
 		
-		
-		return "userInfo.jsp";
+		return "user/userInfo.jsp";
 	}
 }
 	

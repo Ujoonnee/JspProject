@@ -109,7 +109,7 @@ public class UserServiceImpl extends DAO implements UserService {
    @Override
    public int insertUser(UserVO vo) {
       // TODO Auto-generated method stub
-      String sql = "insert into users values(user_num_seq.nextval, ?,?,?,?,user_signup_date.sysdate,?,?,?,?)";
+      String sql = "insert into users values(user_num_seq.nextval,?,?,?,?,sysdate,?,?,?,'user')";
       int r = 0;
       try {
          psmt = conn.prepareStatement(sql);
@@ -117,11 +117,9 @@ public class UserServiceImpl extends DAO implements UserService {
          psmt.setString(2, vo.getUserPw());
          psmt.setString(3, vo.getUserName());
          psmt.setString(4, vo.getUserDob());
-         psmt.setString(5, vo.getUserSignupDate());
-         psmt.setString(6, vo.getUserTel());
-         psmt.setString(7, vo.getUserEmail());
-         psmt.setString(8, vo.getUserAddress());
-         psmt.setString(9, vo.getUserAuthority());
+         psmt.setString(5, vo.getUserTel());
+         psmt.setString(6, vo.getUserEmail());
+         psmt.setString(7, vo.getUserAddress());
          r = psmt.executeUpdate();
          System.out.println(r + "건 입력");
 
