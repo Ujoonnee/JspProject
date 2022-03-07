@@ -14,6 +14,7 @@
 		<li><a href="productUpdate.do">productUpdate</a></li>
 		<li><a href="productDetail.do">productDetail</a></li>
 		<li><a href="mypageCheck.do">mypageCheck.do</a></li>
+		<li><a href="orderList.do">orderList.do</a></li>
 		<li><a href="qnaList.do">qnaList.do</a></li>
 		<li><a href="qnaDetail.do">qnaDetail.do</a></li>
 		<li><a href="qnaForm.do">qnaForm.do</a></li>
