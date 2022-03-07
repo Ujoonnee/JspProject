@@ -32,6 +32,7 @@
 		
 			
 			</table>
+			<button type="button" onclick="location.href='main.do' ">MAIN</button>
 	</div>
 </body>
 </html>
