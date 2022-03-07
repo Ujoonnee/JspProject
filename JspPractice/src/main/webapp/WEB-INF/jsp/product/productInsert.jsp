@@ -10,7 +10,7 @@
 	<div align="center">
 	<div><h1>상품 등록하기</h1></div>
 	<div>
-		
+		<button type="button" onclick="location.href='main.do' ">MAIN</button>
 		<p>등록성공</p>
 	</div>
 	</div>

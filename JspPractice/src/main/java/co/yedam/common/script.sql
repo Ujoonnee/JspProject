@@ -45,10 +45,6 @@ create table products(
     product_category2   varchar2(20),
     product_thumbnail   varchar2(200),
     product_info        varchar2(200),
-    product_option1     varchar2(20),
-    option1_detail      varchar2(200),
-    product_option2     varchar2(20),
-    option2_detail      varchar2(200),
     product_stock       number(20),
     product_price       number(20)
 );

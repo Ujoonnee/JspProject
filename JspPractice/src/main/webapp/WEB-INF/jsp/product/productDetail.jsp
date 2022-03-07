@@ -51,7 +51,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                <a href="main.do"><img src="img/core-img/logo.png" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -67,7 +67,7 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                <a href="main.do"><img src="img/core-img/logo.png" alt=""></a>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
@@ -165,7 +165,7 @@
                                 <a href="product-details.html">
                                     <h6>${detail.productName}</h6>
                                 </a>
-                                <!-- Ratings & Review -->
+                                       <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
                                     <div class="ratings">
                                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -187,18 +187,46 @@
                             </div>
 
                             <!-- Add to Cart Form -->
-                            <form class="cart clearfix" method="post">
+                            <form id="frm" action="#" class="cart clearfix" method="post">
                                 <div class="cart-btn d-flex mb-50">
                                     <p>Qty</p>
                                     <div class="quantity">
                                         <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="productQuantity" value="1">
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                     </div>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+                                <input type="button" id="addCart" name="addCart" onclick="addCart" value="Add to cart" class="btn amado-btn">
+                                <input type="button" id="buy" name="buy" value="buy" class="btn amado-btn">
+                                
+                                <input type="hidden" id="productPrice" name="productPrice" value="${detail.productPrice}">
+                                <input type="hidden" id="productName" name="productName" value="${detail.productName}">
+                                <input type="hidden" id="productThumbnail" name="productThumbnail" value="${detail.productThumbnail}">
+                                <input type="hidden" id="productSerial" name="productSerial" value="${detail.productSerial}">
+                         
                             </form>
-
+                            
+                            
+                            <script>
+                            	function addCartEvent() {
+                            		frm.action = "addCart.do";
+                            		frm.submit();
+                            	}
+                            	
+                            	function buyEvent() {
+                            		frm.action = "orderPage.do";
+                            		frm.submit();
+                            	}
+                            	
+                             	document.getElementById("addCart").addEventListener('click', addCartEvent);
+                             	document.getElementById("buy").addEventListener('click', buyEvent);
+                            	
+                            	
+                            	
+                            </script>
+                            
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -242,7 +270,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                            <a href="main.do"><img src="img/core-img/logo2.png" alt=""></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -260,7 +288,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <a class="nav-link" href="main.do">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="shop.html">Shop</a>
