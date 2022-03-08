@@ -17,6 +17,7 @@ public class UserLogin implements Command {
 		vo.setUserId(request.getParameter("userId"));
 		vo.setUserPw(request.getParameter("userPw"));
 		vo = dao.pwCheck(vo);
+		
 		// id, pw가 일치하면 VO 에 다른 정보들이 정상적으로 입력됨
 		if(vo.getUserName() != null) {
 			System.out.println(vo.getUserName() + " login successful");

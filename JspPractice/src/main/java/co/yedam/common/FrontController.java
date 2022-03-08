@@ -34,10 +34,12 @@ import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
 import co.yedam.qna.QnaUserInsert;
 import co.yedam.shippingAddress.ShippingAddressListAjax;
+import co.yedam.shippingAddress.ShippingInfo;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
 import co.yedam.user.UserLogin;
 import co.yedam.user.UserLoginForm;
+import co.yedam.user.UserLogout;
 import co.yedam.user.UserSignUp;
 import co.yedam.user.UserSignUpForm;
 
@@ -60,6 +62,7 @@ public class FrontController extends HttpServlet {
 		map.put("/userLogin.do", new UserLogin()); // 2 로그인 처리
 		map.put("/userSignUpForm.do", new UserSignUpForm()); // 3 회원가입 폼 호출
 		map.put("/userSignUp.do", new UserSignUp()); // 3 회원가입 폼 호출
+		map.put("/userLogout.do", new UserLogout()); // 3 회원가입 폼 호출
 		
 		// admin pages
 		map.put("/userList.do", new UserList()); //4 회원리스트(관리자)

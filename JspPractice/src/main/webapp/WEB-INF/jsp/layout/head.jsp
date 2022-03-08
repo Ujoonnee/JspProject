@@ -15,7 +15,7 @@
 			</div>
 			<div
 				style="display: inline-block; position: absolute; top: 10px; right: 20px;">
-				<h6>로그아웃</h6>
+				<a href="userLogout.do"><h6>로그아웃</h6></a>
 			</div>
 		</c:when>
 		<c:otherwise>

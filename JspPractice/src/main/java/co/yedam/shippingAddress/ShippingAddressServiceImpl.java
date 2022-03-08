@@ -65,14 +65,16 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddressSe
 	
 	@Override
 	public int insertShippingAddress(ShippingAddressVO vo) {
-		String sql = "INSERT INTO shipping_address VALUES(?,?,?,?)";
+		String sql = "INSERT INTO shipping_address VALUES(?,?,?,?,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, rs.getString("user_id"));
-			psmt.setInt(2, rs.getInt("is_default"));
-			psmt.setInt(3, rs.getInt("phone_number"));
-			psmt.setString(4, rs.getString("shipping_address"));
+			
+			psmt.setString(1, vo.getUserId());
+			psmt.setString(2, vo.getShippingAddress());
+			psmt.setString(3, vo.getRecipientName());
+			psmt.setString(4, vo.getPhoneNumber());
+			psmt.setString(5, vo.getShippingComment());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 입력되었습니다.");
 		}catch (SQLException e) {
