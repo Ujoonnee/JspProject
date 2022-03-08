@@ -4,9 +4,18 @@
 
 <div>
 	<!-- Logo -->
-	<div class="logo" style="display: inline-block; padding: 70px;">
+	<div class="logo" style="display: inline-block; padding: 5vw;">
 		<a href="main.do"><img src="img/core-img/logo.png" alt=""></a>
 	</div>
+	<div style="display: inline-block; width: 5vw;"></div>
+	<div style="display: inline-block; widht: 60vw; height: 35px; line-height: 35px;">
+		<form action="searchProduct.do" method="post">
+			<input type="text" name="keyword" style="width: 50vw; height: 35px; font-size: 15px;" placeholder="상품명 또는 카테고리를 입력하세요.">&nbsp;&nbsp;&nbsp;
+			<button type="submit" style="height: 35px; font-size: 20px;">검색</button>
+		</form>
+		
+	</div>
+
 	<c:choose>
 		<c:when test="${user.userAuthority eq 'user'}">
 			<div

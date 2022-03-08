@@ -7,7 +7,10 @@
 				src="img/core-img/search.png" alt=""> Search</a></li>
 		<li>&nbsp;</li>
 		 -->
-		<li><h2>Category</h2></li>
+		<li style="text-align: center;"><a href="productList.do"><h2>All Products</h2></a></li>
+		<li>&nbsp;</li>
+		<li>&nbsp;</li>
+		<li style="text-align: center;"><h2>Category</h2></li>
 		<li>&nbsp;</li>
 		<li><h4>상의</h4></li>
 		<li><a href="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소분류1</a></li>

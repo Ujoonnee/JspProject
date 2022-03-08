@@ -10,12 +10,15 @@ public class ProductDetail implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
+		ProductServiceImpl service = new ProductServiceImpl();
 		int productSerial = Integer.parseInt(request.getParameter("productSerial"));
+		
 		ProductVO find = new ProductVO();
 		find.setProductSerial(productSerial);
-		ProductServiceImpl service = new ProductServiceImpl();
-		ProductVO productList = service.selectProduct(find);
-		request.setAttribute("detail", productList);
+		
+		find = service.selectProduct(find);
+		request.setAttribute("detail", find);
+		
 		return "product/productDetail.jsp";
 	}
 }
