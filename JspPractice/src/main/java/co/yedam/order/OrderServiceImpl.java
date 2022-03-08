@@ -62,16 +62,54 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		return list ;
 	}
 	@Override
-	public List<OrderVO> selectOrder(String type, String text) {
-		String sql = "SELECT o.order_num, p.product_name, o.user_id, u.user_name, o.order_date FROM products p,orders o, users u WHERE p.product_serial = o.product_serial AND o.user_id = u.user_id and ? = ?";
+	public List<OrderVO> selectOrder(OrderVO vo) {
+		String sql = "SELECT * from orders where user_id = ?";
 		List<OrderVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, type);
-			psmt.setString(2, text);
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
+				OrderVO order = new OrderVO();
+				order.setOrderNum(rs.getString("order_num"));
+				order.setProductName(rs.getString("product_name"));
+				order.setUserId(rs.getString("user_id"));
+				order.setUserName(rs.getString("user_name"));
+				order.setOrderDate(rs.getString("order_date"));
 
+				list.add(order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	@Override
+	public List<OrderVO> selectOrder(String type, String text) {
+		String sql = "SELECT o.order_num, p.product_name, o.user_id, u.user_name, o.order_date FROM products p,orders o, users u WHERE p.product_serial = o.product_serial AND o.user_id = u.user_id";
+		if (type.equals("order_num")) {
+			sql += " and order_num = ?";
+		} else if(type.equals("product_name")){
+			sql += " and product_name = ?";	
+		} else if(type.equals("user_id")){
+			sql += " and user_id = ?";	
+		} else if(type.equals("user_name")){
+			sql += " and user_name = ?";	
+		} else if(type.equals("order_date")){
+			sql += " and order_date = ?";	
+		}
+		
+		List<OrderVO> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, text);
+			System.out.println(sql);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				System.out.println("while entered");
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
 				order.setProductName(rs.getString("product_name"));
