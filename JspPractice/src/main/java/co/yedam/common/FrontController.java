@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.cart.AddCart;
 import co.yedam.cart.Cart;
 import co.yedam.main.Main;
+import co.yedam.mypage.MyPage;
 import co.yedam.mypage.MyPageCheck;
 import co.yedam.mypage.MyPageUpdate;
 import co.yedam.order.OrderList;
@@ -63,6 +64,7 @@ public class FrontController extends HttpServlet {
 		map.put("/orderList.do", new OrderList()); //6 주문목록(관리자)
 		
 		// Mypage
+		map.put("/myPage.do", new MyPage()); //7 마이페이지(회원정보 수정 - 비밀번호 확인)	
 		map.put("/myPageCheck.do", new MyPageCheck()); //7 마이페이지(회원정보 수정 - 비밀번호 확인)	
 		map.put("/myPageUpdate.do", new MyPageUpdate()); 	//8 마이페이지(회원정보 수정)
 
