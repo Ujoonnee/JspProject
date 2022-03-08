@@ -7,6 +7,6 @@
 <title>myPageUpdate.jsp</title>
 </head>
 <body>
-
+<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
 </body>
 </html>
