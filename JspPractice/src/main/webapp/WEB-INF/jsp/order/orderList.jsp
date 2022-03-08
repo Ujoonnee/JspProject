@@ -55,12 +55,19 @@
 
 		document.querySelector('#searchBtn').addEventListener('click', () => {
 			document.getElementsByTagName('tbody')[0].innerHTML = '';
- 			 fetch('OrderAjax.do'{
+ 			 fetch('orderAjax.do?', {
  				 method: 'get',
- 				 body: 
+ 				 headers: 'application/x-www-form-urlencoded',
+ 				 body: 'id=hi'
  			 })
- 			 .then(response => )
-	
+ 			 .then(response => {
+ 				 	console.log(response);
+ 				 	return response.text();
+ 				 })
+ 			 .then(text => {
+ 				 console.log(text);
+ 			 })
+			 
 		})
 		
 		function textSelect() {

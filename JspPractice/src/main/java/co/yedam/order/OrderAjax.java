@@ -19,7 +19,7 @@ public class OrderAjax implements Command {
 		OrderService dao = new OrderServiceImpl();
 		List<OrderVO> list = dao.selectOrder(type,text);
 		
-
+		System.out.println(request.getParameter("id"));
 		Gson gson = new Gson();
 		String str = gson.toJson(list);
 		System.out.println(str);

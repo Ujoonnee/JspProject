@@ -79,7 +79,7 @@ public class FrontController extends HttpServlet {
 	    map.put("/qnaUserInsert.do", new QnaUserInsert()); //12 마이페이지(1:1문의)
 	    map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
-
+	    
 		// product pages
         map.put("/productList.do", new ProductList()); //15 상품 목록
         map.put("/productInsertForm.do", new ProductInsertForm());    // 상품 등록 페이지(관리자)
