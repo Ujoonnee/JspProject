@@ -20,13 +20,14 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddressSe
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				ShippingAddressVO vo = new ShippingAddressVO();
-				vo.setUserId(rs.getString("user_id"));
-				vo.setIsDefault(rs.getInt("is_defalut"));
-				vo.setPhoneNumber(rs.getString("phone_number"));
-				vo.setShippingAddress(rs.getString("shipping_address"));
+				ShippingAddressVO address = new ShippingAddressVO();
+				address.setUserId(rs.getString("user_id"));
+				address.setShippingAddress(rs.getString("shipping_address"));
+				address.setRecipientName(rs.getString("recipient_name"));
+				address.setPhoneNumber(rs.getString("phone_number"));
+				address.setShippingComment(rs.getString("shipping_comment"));
 				
-				list.add(vo);
+				list.add(address);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -47,9 +48,10 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddressSe
 			while (rs.next()) {
 				ShippingAddressVO address = new ShippingAddressVO();
 				address.setUserId(rs.getString("user_id"));
-				address.setIsDefault(rs.getInt("is_defalut"));
-				address.setPhoneNumber(rs.getString("phone_number"));
 				address.setShippingAddress(rs.getString("shipping_address"));
+				address.setRecipientName(rs.getString("recipient_name"));
+				address.setPhoneNumber(rs.getString("phone_number"));
+				address.setShippingComment(rs.getString("shipping_comment"));
 				
 				list.add(address);
 			}
@@ -103,10 +105,6 @@ public class ShippingAddressServiceImpl extends DAO implements ShippingAddressSe
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, vo.getIsDefault());
-			psmt.setString(2, vo.getPhoneNumber());
-			psmt.setString(3, vo.getShippingAddress());
-			psmt.setString(4, vo.getUserId());
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 수정되었습니다.");
 		}catch (SQLException e) {
