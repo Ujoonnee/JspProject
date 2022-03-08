@@ -27,10 +27,12 @@ import co.yedam.product.ProductUpdate;
 import co.yedam.purchase.PurchaseHistory;
 import co.yedam.purchase.PurchaseHistoryDetail;
 import co.yedam.purchase.PurchaseInfo;
+import co.yedam.qna.QnaAdmin;
 import co.yedam.qna.QnaDetail;
 import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
 import co.yedam.qna.QnaUserInsert;
+import co.yedam.shippingAddress.ShippingAddressListAjax;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
 import co.yedam.user.UserLogin;
@@ -62,6 +64,8 @@ public class FrontController extends HttpServlet {
 		map.put("/userList.do", new UserList()); //4 회원리스트(관리자)
 		map.put("/userInfo.do", new UserInfo()); //5 회원 상세정보(관리자)
 		map.put("/orderList.do", new OrderList()); //6 주문목록(관리자)
+		map.put("/orderAjax.do", new OrderAjax());
+		map.put("/shippingAddressListAjax.do", new ShippingAddressListAjax());
 		
 		// Mypage
 		map.put("/myPage.do", new MyPage()); //7 마이페이지(회원정보 수정 - 비밀번호 확인)	
@@ -77,6 +81,7 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
 	    map.put("/qnaUserInsert.do", new QnaUserInsert()); //12 마이페이지(1:1문의)
+	    map.put("/qnaAdmin.do", new QnaAdmin()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
 	    

@@ -30,9 +30,9 @@
 		<table border="1">
 			<tr>
 				<th>배송지 선택</th>
-				<td><input type="radio" name="addressType" value="1" checked>회원정보와
-					동일 <input type="radio" name="addressType" value="2">새 배송지 <input type="radio" name="addressType"
-						value="3">기존 배송지</td>
+				<td><input type="radio" name="addressType" value="1" checked><span>회원정보와
+					동일</span><input type="radio" name="addressType" value="2"><span>새 배송지</span> <input type="radio" name="addressType"
+						value="3"><span>기존 배송지</span></td>
 			</tr>
 			<tr>
 				<th>배송지 주소</th>
@@ -53,10 +53,12 @@
 		</table>
 
 		
-		<input type="submit" onclick="purchase" value="결제하기">
 	</form>
+		<input type="submit" onclick="purchase" value="결제하기">
 
 	<script>
+		window.onload = sameWithUserInfo;
+	
 		function purchase() {
 			alert('purchase');
 			event.preventDefault();
@@ -64,6 +66,61 @@
 			console.log(checked);
 			console.log(checked.value);
 		}
+		
+		const addressType1 = document.getElementsByName("addressType")[0];
+		addressType1.addEventListener('click', sameWithUserInfo);
+		
+		const type1Span = addressType1.nextSibling;
+		type1Span.addEventListener('click', () => addressType1.checked = true);
+		type1Span.addEventListener('click', sameWithUserInfo);
+		
+		
+		const addressType2 = document.getElementsByName("addressType")[1];
+		addressType2.addEventListener('click', newAddress);
+		
+		const type2Span = addressType2.nextSibling;
+		type2Span.addEventListener('click', () => addressType2.checked = true);
+		type2Span.addEventListener('click', newAddress);
+		
+		
+		const addressType3 = document.getElementsByName("addressType")[2];
+		addressType3.addEventListener('click', showShippingAddressList);
+		
+		const type3Span = addressType3.nextSibling;
+		type3Span.addEventListener('click', () => addressType3.checked = true);
+		type3Span.addEventListener('click', showShippingAddressList);
+		
+		
+		
+		const shippingAddress = document.querySelector("input[name=shippingAddress]");
+		const recipientName = document.querySelector("input[name=recipientName]");
+		const phoneNumber = document.querySelector("input[name=phoneNumber]");
+		const shippingComment = document.querySelector("input[name=shippingComment]");
+		
+		
+		function sameWithUserInfo() {
+			shippingAddress.value = "<c:out value='${user.userAddress}'/>";
+			recipientName.value = "<c:out value='${user.userName}'/>";
+			phoneNumber.value = "<c:out value='${user.userTel}'/>";
+			shippingComment.value = '';
+		}
+		
+		function newAddress() {
+			shippingAddress.value = '';
+			recipientName.value = '';
+			phoneNumber.value = '';
+			shippingComment.value = '';
+		}
+		
+		function showShippingAddressList() {
+			alert('fetch start');
+			fetch('shippingAddressList.do')
+			.then(response => response.json())
+			.then(response => {
+				
+			});
+		}
+		
 	</script>
 </body>
 
