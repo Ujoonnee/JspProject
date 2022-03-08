@@ -7,6 +7,7 @@
 <title>myPageCheckFail.jsp</title>
 </head>
 <body>
+<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
 	<script>
 	alert("비밀번호 불일치!");
 	history.back();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,9 @@
 <title>myPageCheck.jsp</title>
 </head>
 <body>
+<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
 <form>
-	<c:if test="${not empty id }">
+	<c:if test="${not empty userId }">
 		<input type="hidden" name="userId" value="${id }">
 	</c:if>	
 	<input type="password" name="userPw">

@@ -11,7 +11,7 @@
 		<table border='1'>
 			<tr>
 			<td width = '20%'>제목</td>
-			<td width = '80%'></td>
+			<td width = '80%'>${list.qnaTitle }</td>
 			</tr>
 			<tr>
 			<td width = '20%'>주문번호</td>
