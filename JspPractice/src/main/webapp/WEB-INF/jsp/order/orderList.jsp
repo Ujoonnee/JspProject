@@ -34,7 +34,7 @@
 					<th>주문일시</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id=tbody>
 					<c:forEach var="list" items="${orderList}">
 						<tr>
 							<td>${list.orderNum}</td>
@@ -57,7 +57,7 @@
 			var langSelect = document.getElementById("selectbox"); // select element에서 선택된 option의 value가 저장된다.
 			var selectValue = langSelect.options[langSelect.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
 			type = selectValue;
-			console.log(type);
+			
 			
 		}
 
@@ -67,23 +67,51 @@
 		}
 		
 		
-	
+		function selectOne(response){
+			for(var i=0; i<response.length; i++){
+					let tr = document.createElement('tr');
+	 				tbody.appendChild(tr);
+					let td1 = document.createElement('td');
+					let td2 = document.createElement('td');
+					let td3 = document.createElement('td');
+					let td4 = document.createElement('td');
+					let td5 = document.createElement('td');
+		
+					td1.appendChild(document.createTextNode(response[i].orderNum));
+					td2.appendChild(document.createTextNode(response[i].productName));
+					td3.appendChild(document.createTextNode(response[i].userId));
+					td4.appendChild(document.createTextNode(response[i].userName));
+					td5.appendChild(document.createTextNode(response[i].orderDate));
+					
+					tr.appendChild(td1);
+					tr.appendChild(td2);
+					tr.appendChild(td3);
+					tr.appendChild(td4);
+					tr.appendChild(td5);
+	 				
+             }
+		}
 		
 		document.querySelector('#searchBtn').addEventListener('click', () => {
 			document.getElementsByTagName('tbody')[0].innerHTML = '';
  			 fetch('orderAjax.do?', {
  				 method: 'POST',
- 				 headers: {'Content-Type':'application/x-www-form-urlencoded'},
+ 				 headers: {
+ 							 'Content-Type':'application/x-www-form-urlencoded;  charset=UTF-8',
+ 							 'dataType': 'text',
+ 							},
  				 body: 'type=' + type +'&text=' + text
  			 })
  			 .then(response => {
+ 				console.log(response.status);
  					return response.json();
  				 })
  			 .then(response => {
- 				 console.log(response);
- 				 console.log(typeof response);
- 				 console.log(response[0])
+ 				selectOne(response);	 
+ 				 
+
  			 })
+ 			 
 			 
 		})
 		

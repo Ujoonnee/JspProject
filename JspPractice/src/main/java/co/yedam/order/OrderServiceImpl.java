@@ -61,31 +61,7 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		}
 		return list ;
 	}
-	@Override
-	public List<OrderVO> selectOrder(OrderVO vo) {
-		String sql = "SELECT * from orders where user_id = ?";
-		List<OrderVO> list = new ArrayList<>();
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUserId());
-			rs = psmt.executeQuery();
-			while (rs.next()) {
-				OrderVO order = new OrderVO();
-				order.setOrderNum(rs.getString("order_num"));
-				order.setProductName(rs.getString("product_name"));
-				order.setUserId(rs.getString("user_id"));
-				order.setUserName(rs.getString("user_name"));
-				order.setOrderDate(rs.getString("order_date"));
 
-				list.add(order);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
 
 	@Override
 	public List<OrderVO> selectOrder(String type, String text) {
@@ -93,9 +69,9 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		if (type.equals("order_num")) {
 			sql += " and order_num = ?";
 		} else if(type.equals("product_name")){
-			sql += " and product_name = ?";	
+			sql += " and p.product_name = ?";	
 		} else if(type.equals("user_id")){
-			sql += " and user_id = ?";	
+			sql += " and o.user_id = ?";	
 		} else if(type.equals("user_name")){
 			sql += " and user_name = ?";	
 		} else if(type.equals("order_date")){
