@@ -35,7 +35,7 @@ create table shipping_address (
 	shipping_address   varchar2(100) not null,
     recipient_name     varchar2(100),
     phone_number       varchar2(20) not null,
-    shipping_comment            varchar2(100),
+    shipping_comment   varchar2(100) default '-',
    constraint fk_shipping_address_user_id foreign key(user_id) references users(user_id)
 );
 

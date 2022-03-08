@@ -1,0 +1,19 @@
+package co.yedam.user;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import co.yedam.common.Command;
+
+public class UserLogout implements Command {
+
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "main/main.jsp";
+	}
+
+}

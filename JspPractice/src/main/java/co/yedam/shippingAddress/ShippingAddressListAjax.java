@@ -26,9 +26,13 @@ public class ShippingAddressListAjax implements Command {
 		
 		List<ShippingAddressVO> list = dao.selectShippingAddress(address);
 		
-		Gson gson = new Gson();
-		String str = gson.toJson(list);
-		return "ajax:"+str;
+		for (ShippingAddressVO shippingAddressVO : list) {
+			System.out.println(shippingAddressVO.getShippingAddress());
+		}
+		
+		request.setAttribute("list", list);
+		
+		return "shippingAddressList/shippingAddressList.jsp";
 	}
 
 }

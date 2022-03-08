@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
           <a href="main.do"><img src="img/core-img/logo.png" alt="" /></a>
         </div>
 
-        <form id="login" action="userLogin.do" class="input-group">
+        <form id="login" action="userLogin.do" class="input-group" method="post">
           <input
             type="text"
             class="input-field"
