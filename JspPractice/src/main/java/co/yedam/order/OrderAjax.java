@@ -1,5 +1,6 @@
 package co.yedam.order;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,14 +17,19 @@ public class OrderAjax implements Command {
 		String type = request.getParameter("type");
 		String text = request.getParameter("text");
 		
-		OrderService dao = new OrderServiceImpl();
-		List<OrderVO> list = dao.selectOrder(type,text);
+		System.out.println(type + " " + text);
 		
-		System.out.println(request.getParameter("id"));
+		OrderService dao = new OrderServiceImpl();
+		
+		List<OrderVO> list = dao.selectOrder(type,text);
+
+		//System.out.println(list.get(0).getOrderNum());
+		
 		Gson gson = new Gson();
 		String str = gson.toJson(list);
 		System.out.println(str);
 		return "ajax:" + str;
+		
 	}
 
 }

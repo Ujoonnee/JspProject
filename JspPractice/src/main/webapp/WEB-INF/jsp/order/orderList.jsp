@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <body>
 	<div>
-		<select id="selectbox" onchange="chageLangSelect()"
+		<select id="selectbox" onchange="changeSelect()"
 			style="display: inline-block;">
 			<option value="order_num">주문번호</option>
 			<option value="product_name">제품명</option>
@@ -20,7 +20,7 @@
 		</select>
 	</div>
 	<input type="text" id="searchBox" style="display: inline-block;">
-	<input type="button" style="display: inline-block;" id="searchBtn" name="searchBtn" value="검색" onclick="textSelect();">
+	<input type="button" style="display: inline-block;" id="searchBtn" name="searchBtn" value="검색" onclick="textSelect()">
 
 
 	<div>
@@ -35,14 +35,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				
 					<c:forEach var="list" items="${orderList}">
-					<tr>
-						<td>${list.orderNum}</td>
-						<td>${list.productName}</td>
-						<td>${list.userId}</td>
-						<td>${list.userName}</td>
-						<td>${list.orderDate}</td>
+						<tr>
+							<td>${list.orderNum}</td>
+							<td>${list.productName}</td>
+							<td>${list.userId}</td>
+							<td>${list.userName}</td>
+							<td>${list.orderDate}</td>
 							</tr>
 					</c:forEach>
 			
@@ -52,34 +51,42 @@
 	</div>
 
 	<script>
+		
+		let type;
+		function changeSelect(){ 
+			var langSelect = document.getElementById("selectbox"); // select element에서 선택된 option의 value가 저장된다.
+			var selectValue = langSelect.options[langSelect.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
+			type = selectValue;
+			console.log(type);
+			
+		}
 
+		let text;
+		function textSelect() {
+			text = document.getElementById('searchBox').value;
+		}
+		
+		
+	
+		
 		document.querySelector('#searchBtn').addEventListener('click', () => {
 			document.getElementsByTagName('tbody')[0].innerHTML = '';
  			 fetch('orderAjax.do?', {
- 				 method: 'get',
- 				 headers: 'application/x-www-form-urlencoded',
- 				 body: 'id=hi'
+ 				 method: 'POST',
+ 				 headers: {'Content-Type':'application/x-www-form-urlencoded'},
+ 				 body: 'type=' + type +'&text=' + text
  			 })
  			 .then(response => {
- 				 	console.log(response);
- 				 	return response.text();
+ 					return response.json();
  				 })
- 			 .then(text => {
- 				 console.log(text);
+ 			 .then(response => {
+ 				 console.log(response);
+ 				 console.log(typeof response);
+ 				 console.log(response[0])
  			 })
 			 
 		})
 		
-		function textSelect() {
-		var text = document.getElementById('searchBox').value;
-		return text;
-		}
-		function chageLangSelect(){ 
-		var langSelect = document.getElementById("selectbox"); // select element에서 선택된 option의 value가 저장된다.
-		var selectValue = langSelect.options[langSelect.selectedIndex].value; // select element에서 선택된 option의 text가 저장된다. 
-		var type = selectValue;
-		return type;
-		}
 		
 	</script>
 </body>
