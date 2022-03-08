@@ -8,4 +8,5 @@ public interface OrderService {
 	public int deleteOrder(OrderVO vo);
 	public int updateOrder(OrderVO vo);
 	public List<OrderVO> selectOrder(String type, String text);
+	public List<OrderVO> selectOrder(OrderVO vo);
 }

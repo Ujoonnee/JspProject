@@ -26,6 +26,7 @@ public class QnaForm implements Command{
 		List<OrderVO> list = dao.selectOrder(order);
 		request.setAttribute("orderList", list);
 
+
 		return "qna/qnaForm.jsp";
 	}
 }

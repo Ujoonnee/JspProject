@@ -17,6 +17,7 @@ import co.yedam.main.Main;
 import co.yedam.mypage.MyPage;
 import co.yedam.mypage.MyPageCheck;
 import co.yedam.mypage.MyPageUpdate;
+import co.yedam.order.OrderAjax;
 import co.yedam.order.OrderList;
 import co.yedam.order.OrderPage;
 import co.yedam.product.ProductDetail;

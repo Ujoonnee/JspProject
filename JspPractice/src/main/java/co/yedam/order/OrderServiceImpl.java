@@ -37,7 +37,30 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		}
 		return list;
 	}
-
+	@Override
+	public List<OrderVO> selectOrder(OrderVO vo){
+		String sql = "SELECT * from orders where user_id = ?";
+		List<OrderVO> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,vo.getUserId());
+			rs= psmt.executeQuery();
+			while(rs.next()) {
+				OrderVO order = new OrderVO();
+				order.setOrderNum(rs.getString("order_num"));
+				order.setProductName(rs.getString("product_serial"));
+				order.setUserId(rs.getString("product_quantity"));
+				order.setOrderDate(rs.getString("order_date"));
+				
+				list.add(order);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list ;
+	}
 	@Override
 	public List<OrderVO> selectOrder(String type, String text) {
 		String sql = "SELECT o.order_num, p.product_name, o.user_id, u.user_name, o.order_date FROM products p,orders o, users u WHERE p.product_serial = o.product_serial AND o.user_id = u.user_id and ? = ?";
@@ -65,6 +88,8 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		return list;
 	}
 
+
+	
 	@Override
 	public int insertOrder(OrderVO vo) {
 		String sql = "INSERT INTO ORDERS VALUES(?,?,?,?,?)";

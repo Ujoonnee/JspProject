@@ -68,7 +68,7 @@
 			<input type="hidden" id="user_id" name="user_id" value = "${user.userId }">
 			<button type='button' onclick="history.back()">뒤로가기</button>&nbsp;
 			<input type='reset' value='취소'>&nbsp;
-			<button type='button' id = "register">작성하기</button>
+			<button type='button' id = "register" >작성하기</button>
 		</form>
 
 	</div>

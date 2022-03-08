@@ -140,7 +140,7 @@ public class UserServiceImpl extends DAO implements UserService {
          psmt.setString(2, vo.getUserTel());
          psmt.setString(3, vo.getUserEmail());
          psmt.setString(4, vo.getUserAddress());
-         psmt.setInt(5, vo.getUserNum());
+         psmt.setString(5, vo.getUserId());
          r = psmt.executeUpdate();
          System.out.println(r + "건 수정");
          

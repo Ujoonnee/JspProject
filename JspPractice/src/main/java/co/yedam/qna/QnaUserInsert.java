@@ -40,6 +40,6 @@ public class QnaUserInsert implements Command{
 		service.insertQna(qna);
 		
 		System.out.println("qnaInsert Successful");
-		return "qna/qnaList.jsp";
+		return "main/main.jsp";
 	}
 }
