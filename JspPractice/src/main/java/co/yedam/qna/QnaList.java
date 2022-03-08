@@ -17,12 +17,14 @@ public class QnaList implements Command {
 		HttpSession session = request.getSession();
 		
 		UserVO user = (UserVO) session.getAttribute("user");
+		if(user.getUserAuthority() == "admin") {
 		
-		List<QnaVO> list = dao.selectQnaList(user.getUserId());
+			return "qna/qnaList.jsp";
+		}else {
+			List<QnaVO> list = dao.selectQnaList(user.getUserId());
+			request.setAttribute("list",list);
+			return"qna/qnaList.jsp";
+		}
 		
-		request.setAttribute("list",list);
-		
-		
-		return "qna/qnaList.jsp";
 	}
 }

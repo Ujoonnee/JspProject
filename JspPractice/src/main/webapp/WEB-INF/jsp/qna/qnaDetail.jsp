@@ -31,7 +31,7 @@
 			</tr>
 		</table>
 		
-		<c:if test="${user.authority eq 'admin' }">
+		<c:if test="${user.userAuthority eq 'admin' }">
 		<form action = "qnaForm.do " method ="post">
 			<input type="hidden" name = "qnaDate" value="${qna.qnaDate }">			
 			<input type="submit" value="수정하기"> 
