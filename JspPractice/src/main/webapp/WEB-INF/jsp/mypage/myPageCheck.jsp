@@ -8,7 +8,8 @@
 <title>myPageCheck.jsp</title>
 </head>
 <body>
-<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
+<jsp:include page="../layout/head.jsp"/>
+<jsp:include page="../layout/myPageSidebar.jsp"/>
 <form>
 	<c:if test="${not empty userId }">
 		<input type="hidden" name="userId" value="${id }">

@@ -14,6 +14,8 @@
 </style>
 </head>
 <body>
+<jsp:include page="../layout/head.jsp"/>
+<jsp:include page="../layout/sidebar.jsp"/>
 	<div id="st">
 		<b>회원가입</b>
 

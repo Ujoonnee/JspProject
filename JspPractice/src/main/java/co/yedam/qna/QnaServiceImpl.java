@@ -132,6 +132,36 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		 }
 		 return vo;
 	 }
+	 
+	 @Override
+	 public QnaVO selectofQnaData(QnaVO vo){
+		 String sql = "select * from qna where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
+		 
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1, vo.getQnaDate());
+			 
+			 rs = psmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 vo.setUserId(rs.getString("user_id"));
+				 vo.setQnaType(rs.getString("qna_type"));
+				 vo.setOrderNum(rs.getString("order_num"));
+				 vo.setQnaDate(rs.getString("qna_date"));
+				 vo.setQnaTitle(rs.getString("qna_title"));
+				 vo.setQnaContent(rs.getString("qna_content"));
+				 vo.setQnaPhoto(rs.getString("qna_photo"));
+				 vo.setQnaStatus(rs.getString("qna_status"));
+				 vo.setResponseDate(rs.getString("response_date"));
+				 
+			 }
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }finally {
+			 close();
+		 }
+		 return vo;
+	 }
 //	 qna검색기능
 //	 public List<QnaVO> find(String type, String keyword)
 //	 throws SQLException{

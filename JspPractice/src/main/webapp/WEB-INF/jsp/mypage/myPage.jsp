@@ -8,7 +8,8 @@
 <title>myPageCheck.jsp</title>
 </head>
 <body>
-<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
+<jsp:include page="../layout/head.jsp"/>
+<jsp:include page="../layout/myPageSidebar.jsp"/>
 
 <form action="myPageCheck.do" id="frm">
 	<input type="hidden"  value="${user.userId }">

@@ -7,10 +7,11 @@
 <title>myPageUpdate.jsp</title>
 </head>
 <body>
-<jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>
-<form action="mypage/myPageUpdate.do" id="frm" method="post">
+<jsp:include page="../layout/head.jsp"/>
+<jsp:include page="../layout/myPageSidebar.jsp"/>
+<form action="myPageUpdate.do" id="frm" method="post">
 	
-	<div><input type="password" id="pw" name="pw" placeholder="pw" required></div>
+	<div><input type="password" id="pw" name="pw" placeholder="변경할 pw" required></div>
 	<div><input type="password" id="pw1" name="pw1" placeholder="pw확인" required></div>
 	<div><input type="text" id="userTel" name="userTel" placeholder="전화번호" ></div>
 	<div><input type="text" id="userEmail" name="userEmail" placeholder="이메일" ></div>

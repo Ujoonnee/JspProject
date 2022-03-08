@@ -8,4 +8,5 @@ public interface QnaService {
 	 public List<QnaVO> selectAllList();
 	 public int insertQna(QnaVO vo);
 	 public QnaVO selectofOrderNum(QnaVO vo);
+	 public QnaVO selectofQnaData(QnaVO vo);
 }

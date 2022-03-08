@@ -136,11 +136,13 @@ public class UserServiceImpl extends DAO implements UserService {
       String sql = "update users set user_pw = ?, user_tel = ?, user_email = ?, user_address = ? where user_id = ?";
       int r = 0;
       try {
+    	 psmt = conn.prepareStatement(sql);
          psmt.setString(1, vo.getUserPw());
          psmt.setString(2, vo.getUserTel());
          psmt.setString(3, vo.getUserEmail());
          psmt.setString(4, vo.getUserAddress());
          psmt.setString(5, vo.getUserId());
+         
          r = psmt.executeUpdate();
          System.out.println(r + "건 수정");
          

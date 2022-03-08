@@ -1,4 +1,5 @@
 package co.yedam.mypage;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,32 +15,22 @@ public class MyPageUpdate implements Command {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		UserVO vo = (UserVO) session.getAttribute("user");
-		
-		String id = vo.getUserId();
+
 		String pw = request.getParameter("pw");
 		String tel = request.getParameter("userTel");
 		String email = request.getParameter("userEmail");
 		String address = request.getParameter("userAddress");
-		
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(tel);
-		System.out.println(email);
-		System.out.println(address);
-		
-		UserVO user = new UserVO();
-		
-		user.setUserId(id);
-		user.setUserPw(pw);
-		user.setUserTel(tel);
-		user.setUserEmail(email);
-		user.setUserAddress(address);
-	
+
+		vo.setUserPw(pw);
+		vo.setUserTel(tel);
+		vo.setUserEmail(email);
+		vo.setUserAddress(address);
+
 		UserService service = new UserServiceImpl();
 		System.out.println("중간");
-		service.updateUser(user);
+		service.updateUser(vo);
 		System.out.println("userUpdate Success");
-		
-		return "main/main.jsp";
+
+		return "user/userInfo.jsp";
 	}
 }

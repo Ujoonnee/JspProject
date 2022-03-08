@@ -10,6 +10,9 @@
 
 </head>
 <body>
+<jsp:include page="../layout/head.jsp"/>
+<jsp:include page="../layout/sidebar.jsp"/>
+
 	<div align = "left"> 회원 리스트</div>
 	<br><br>
 	<div align="center">

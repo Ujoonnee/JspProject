@@ -25,8 +25,9 @@ public class QnaForm implements Command{
 		order.setUserId(user.getUserId());
 		List<OrderVO> list = dao.selectOrder(order);
 		request.setAttribute("orderList", list);
-
-
+		if(request.getParameter("qnaDate") != null) {
+			request.setAttribute("qnaDate",request.getParameter("qnaDate"));
+		}
 		return "qna/qnaForm.jsp";
 	}
 }
