@@ -70,6 +70,39 @@ public class ProductServiceImpl extends DAO implements ProductService{
 		
 		return vo;
 	}
+	
+	public List<ProductVO> searchProductList(String keyword) {
+		String sql = "select * from products where UPPER(product_name) like UPPER(?) or UPPER(product_category1) like UPPER(?) or UPPER(product_category2) like UPPER(?)";
+		List<ProductVO> list = new ArrayList<>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, "%"+keyword+"%");
+			psmt.setString(2, "%"+keyword+"%");
+			psmt.setString(3, "%"+keyword+"%");
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				ProductVO product = new ProductVO();
+				product.setProductSerial(rs.getInt("product_serial"));
+				product.setProductName(rs.getString("product_name"));
+				product.setProductCategory1(rs.getString("product_category1"));
+				product.setProductCategory2(rs.getString("product_category2"));
+				product.setProductThumbnail(rs.getString("product_thumbnail"));
+				product.setProductInfo(rs.getString("product_info"));
+				product.setProductStock(rs.getInt("product_stock"));
+				product.setProductPrice(rs.getInt("product_price"));
+				
+				list.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return list;
+	}
+	
 	@Override
 	public int insertProduct(ProductVO vo) {
 		String sql = "insert into products values(product_serial_seq.nextval,?,?,?,?,?,?,?)";
