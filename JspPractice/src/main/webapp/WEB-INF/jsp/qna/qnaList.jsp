@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@
 			<td width="20%">${qna.qnaType }</td>
 			<td width="20%">${qna.qnaTitle }</td>
 			<td width="20%">${qna.orderNum }</td>
-			<td width="20%" class = "qnaData">${qna.qnaDate }</td>
+			<td width="20%" class = "qnaData">${fn:substring(qna.qnaDate,0,16 ) }</td>
 			<td width="20%">${qna.qnaStatus }</td>
 		</tr>
 		</c:forEach>

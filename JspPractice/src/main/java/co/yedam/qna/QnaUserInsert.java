@@ -41,5 +41,7 @@ public class QnaUserInsert implements Command{
 		
 		System.out.println("qnaInsert Successful");
 		return "main/main.jsp";
+		
+		
 	}
 }

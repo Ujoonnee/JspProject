@@ -12,13 +12,18 @@ public class QnaList implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		QnaServiceImpl dao = new QnaServiceImpl();
-		
+		QnaService dao = new QnaServiceImpl();
 		HttpSession session = request.getSession();
 		
 		UserVO user = (UserVO) session.getAttribute("user");
-		if(user.getUserAuthority() == "admin") {
+		System.out.println(user.getUserAuthority());
 		
+		if(user.getUserAuthority().equals("admin")) {
+			List<QnaVO> list = dao.selectAllList();
+			for (QnaVO qnaVO : list) {
+				System.out.println(qnaVO.getQnaTitle()); 
+			}
+			request.setAttribute("list",list);
 			return "qna/qnaList.jsp";
 		}else {
 			List<QnaVO> list = dao.selectQnaList(user.getUserId());

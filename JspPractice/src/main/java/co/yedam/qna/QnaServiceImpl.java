@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import co.yedam.common.DAO;
@@ -90,8 +91,12 @@ public class QnaServiceImpl extends DAO implements QnaService{
 				 qna.setQnaPhoto(rs.getString("qna_photo"));
 				 qna.setQnaStatus(rs.getString("qna_status"));
 				 qna.setResponseDate(rs.getString("response_date"));
+				 System.out.println("qna selectAll");
 				 
 				 list.add(qna);
+				 for (QnaVO qnaVO : list) {
+					qnaVO.getQnaTitle();
+				}
 			 }
 		 }catch(SQLException e) {
 			 e.printStackTrace();
@@ -132,7 +137,26 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		 }
 		 return vo;
 	 }
-	 
+	 @Override
+	 public int ResponseUpdateQna(String content, String date){
+		 String sql = "update qna set qna_content = ? where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
+		 int r = 0;
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1, content);
+			 psmt.setString(2, date);
+			 
+			 r = psmt.executeUpdate();
+			 System.out.println(r + "건 수정");
+			 
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }finally {
+			 close();
+		 }
+		 return r;
+	 }
+
 	 @Override
 	 public QnaVO selectofQnaData(QnaVO vo){
 		 String sql = "select * from qna where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
@@ -161,6 +185,36 @@ public class QnaServiceImpl extends DAO implements QnaService{
 			 close();
 		 }
 		 return vo;
+	 }
+	 @Override
+	 public List<QnaVO> strSelectofDate (String qnaDate){
+		 String sql = "select * from qna where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
+		 List<QnaVO> list = new ArrayList<>();
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1, qnaDate);
+			 
+			 rs = psmt.executeQuery();
+			 
+			 if(rs.next()) {
+				 QnaVO vo = new QnaVO();
+				 vo.setUserId(rs.getString("user_id"));
+				 vo.setQnaType(rs.getString("qna_type"));
+				 vo.setOrderNum(rs.getString("order_num"));
+				 vo.setQnaDate(rs.getString("qna_date"));
+				 vo.setQnaTitle(rs.getString("qna_title"));
+				 vo.setQnaContent(rs.getString("qna_content"));
+				 vo.setQnaPhoto(rs.getString("qna_photo"));
+				 vo.setQnaStatus(rs.getString("qna_status"));
+				 vo.setResponseDate(rs.getString("response_date"));
+				 list.add(vo);
+			 }
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }finally {
+			 close();
+		 }
+		 return list;
 	 }
 //	 qna검색기능
 //	 public List<QnaVO> find(String type, String keyword)

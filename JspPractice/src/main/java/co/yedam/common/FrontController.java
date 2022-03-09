@@ -33,6 +33,8 @@ import co.yedam.qna.QnaAdmin;
 import co.yedam.qna.QnaDetail;
 import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
+import co.yedam.qna.QnaResponse;
+import co.yedam.qna.QnaUpdate;
 import co.yedam.qna.QnaUserInsert;
 import co.yedam.shippingAddress.ShippingAddressListAjax;
 import co.yedam.shippingAddress.ShippingInfo;
@@ -89,6 +91,8 @@ public class FrontController extends HttpServlet {
 	    map.put("/qnaAdmin.do", new QnaAdmin()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaForm.do", new QnaForm()); //14 1:1문의 작성
+	    map.put("/qnaResponse.do", new QnaResponse()); // CS측 1:1문의 답변
+	    map.put("/qnaUpdate.do", new QnaUpdate()); // CS측 1:1문의 답변
 	    
 		// product pages
         map.put("/productList.do", new ProductList()); //15 상품 목록

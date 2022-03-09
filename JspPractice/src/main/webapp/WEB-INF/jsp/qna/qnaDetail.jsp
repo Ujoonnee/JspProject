@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored = "false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,19 +23,19 @@
 			</tr>
 			<tr>
 			<td width = '20%'>작성일</td>
-			<td width = '80%'>${qna.qnaDate }</td>
+			<td width = '80%' >${fn:substring(qna.qnaDate,0,16 ) }</td>
 			</tr>
 			<tr>
-			<td colspan='2' height = '100px'>
+			<td colspan='2' style="height : 350px; width : 200px;">
 			
 			${qna.qnaContent }</td>
 			</tr>
 		</table>
 		
 		<c:if test="${user.userAuthority eq 'admin' }">
-		<form action = "qnaForm.do " method ="post">
+		<form action = "qnaResponse.do" method ="post">
 			<input type="hidden" name = "qnaDate" value="${qna.qnaDate }">			
-			<input type="submit" value="수정하기"> 
+			<input type="submit" value="답변"> 
 		</form>
 		</c:if>
 	</div>

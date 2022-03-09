@@ -31,6 +31,7 @@ public class QnaDetail implements Command{
 		request.setAttribute("qna", qna);
 		System.out.println("qnaDetailPage");
 			
+		
 		return "qna/qnaDetail.jsp";
 	}
 }
