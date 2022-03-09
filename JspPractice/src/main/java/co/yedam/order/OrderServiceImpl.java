@@ -82,10 +82,9 @@ public class OrderServiceImpl extends DAO implements OrderService {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, text);
-			System.out.println(sql);
+
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				System.out.println("while entered");
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
 				order.setProductName(rs.getString("product_name"));

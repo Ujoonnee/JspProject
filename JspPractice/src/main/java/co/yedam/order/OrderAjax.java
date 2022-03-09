@@ -17,7 +17,7 @@ public class OrderAjax implements Command {
 		String type = request.getParameter("type");
 		String text = request.getParameter("text");
 		
-		System.out.println(type + " " + text);
+		//System.out.println(type + " " + text);
 		
 		OrderService dao = new OrderServiceImpl();
 		
@@ -27,7 +27,7 @@ public class OrderAjax implements Command {
 		
 		Gson gson = new Gson();
 		String str = gson.toJson(list);
-		System.out.println(str);
+		//System.out.println(str);
 		return "ajax:" + str;
 		
 	}
