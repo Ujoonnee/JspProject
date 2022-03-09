@@ -30,16 +30,16 @@
 			</tr>
 			<tr>
 			<td colspan='2' height = '100px'><textarea class="form-control" name="responseContent" maxlength="2048" style="height : 350px; width : 100%;" >${list.qnaContent }
+────────────────────────			
 			</textarea>
-			
 			</td>
 			</tr>
 		</table>
-		</c:forEach>
 		<input type="hidden" name="qnaDate" value="${list.qnaDate }">
 		<input type="submit" class="btn" value="수정하기"/>
+		</c:forEach>
 </form>
-	</div>
+</div>
 <script>
 	/* $('#text').val().replace(/\n/g, "<br>") */
 	alert("여기는 qnaResponse하는곳");
