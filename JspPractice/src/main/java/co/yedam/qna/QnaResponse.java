@@ -11,9 +11,8 @@ public class QnaResponse implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		QnaService dao = new QnaServiceImpl();
-		
 		String qna = request.getParameter("qnaDate");
-		System.out.println(qna);
+		System.out.println(qna + "qna작성시간");
 		List<QnaVO> list = dao.strSelectofDate(qna);
 		
 		request.setAttribute("list",list);

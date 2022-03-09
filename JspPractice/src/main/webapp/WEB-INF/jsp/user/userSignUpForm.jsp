@@ -19,7 +19,7 @@
 	<div id="st">
 		<b>회원가입</b>
 
-		<form id="frm" name="frm" action="userSignUp.do" method="post">	
+		<form id="frm" name="frm" action="userLogin.do" method="post">	
 			<table align="center">
 				<tr>
 					<td><input type="text" id="userId" name="userId"
@@ -27,11 +27,11 @@
 						type="button" id="idchk" value="중복체크" data-checked="false"></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userPw1" name="userPw1"
+					<td><input type="password" id="userPw1" name="userPw1"
 						placeholder="*pw" required></td>
 				</tr>
 				<tr>
-					<td><input type="text" id="userPw2" name="userPw2"
+					<td><input type="password" id="userPw2" name="userPw2"
 						placeholder="*pw확인" required></td>
 				</tr>
 				<tr>
