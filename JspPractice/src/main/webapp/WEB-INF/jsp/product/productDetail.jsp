@@ -148,7 +148,10 @@
                                 </div>
                                 <input type="button" id="addCart" name="addCart" onclick="addCart" value="Add to cart" class="btn amado-btn">
                                 <input type="button" id="buy" name="buy" value="buy" class="btn amado-btn">
+                                <input type="button" id="update" name="update" value="update" class="btn amado-btn">
                                 
+                                
+                                <input type="hidden" id="productSerial" name="productSerial" value="${detail.productSerial}">
                                 <input type="hidden" id="productPrice" name="productPrice" value="${detail.productPrice}">
                                 <input type="hidden" id="productName" name="productName" value="${detail.productName}">
                                 <input type="hidden" id="productThumbnail" name="productThumbnail" value="${detail.productThumbnail}">
@@ -168,8 +171,14 @@
                             		frm.submit();
                             	}
                             	
+                            	function updateEvent() {
+                            		frm.action = "productUpdateForm.do";
+                            		frm.submit();
+                            	}
+                            	
                              	document.getElementById("addCart").addEventListener('click', addCartEvent);
                              	document.getElementById("buy").addEventListener('click', buyEvent);
+                             	document.getElementById("update").addEventListener('click', updateEvent);
                             	
                             	
                             	
