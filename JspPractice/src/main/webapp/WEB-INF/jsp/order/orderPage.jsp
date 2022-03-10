@@ -14,65 +14,100 @@
 	<jsp:include page="../layout/head.jsp"></jsp:include>
 
 	<div class="main-content-wrapper d-flex clearfix">
+
 		<header class="header-area clearfix">
 			<jsp:include page="../layout/sidebar.jsp"></jsp:include>
 		</header>
 
-		<form action="" style="text-align: center;">
-			<div id="productInfo">
-				<h1>제품정보</h1>
-				<table border="1">
-					<tr>
-						<th>사진</th>
-						<th>상품이름</th>
-						<th>수량</th>
-						<th>주문금액</th>
-					</tr>
-					<tr>
-						<td>${productThumbnail}</td>
-						<td>${productName}</td>
-						<td>${productQuantity}</td>
-						<td>${productQuantity * productPrice}</td>
-					</tr>
-				</table>
-			</div>
-			<br><br>
-			<div id="shippingInfo">
-				<h1>배송정보</h1>
-				<table border="1">
-					<tr>
-						<th>배송지 선택</th>
-						<td><input type="radio" name="addressType" value="1" checked><span>회원정보와
-								동일</span><input type="radio" name="addressType" value="2"><span>새
-								배송지</span> <input type="radio" name="addressType" value="3"><span>기존
-								배송지</span></td>
-					</tr>
-					<tr>
-						<th>배송지 주소</th>
-						<td><input type="text" name="shippingAddress" id="" size="50"
-							required></td>
-					</tr>
-					<tr>
-						<th>받는 사람</th>
-						<td><input type="text" name="recipientName" id="" size="50"
-							required></td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						<td><input type="text" name="phoneNumber" id="" size="50"
-							required></td>
-					</tr>
-					<tr>
-						<th>배송 메모</th>
-						<td><input type="text" name="shippingComment" id="" size="50"></td>
-					</tr>
-				</table>
-			</div>
-			<br>
-			<div id="addressList" style="display: none;"></div>
+		<div class="col-12 col-lg-8">
+			<form action="">
+				<div id="productInfo">
+					<h1>제품정보</h1>
+					<table border="1"
+						style="width: 100%; border-left: none; border-right: none;">
+						<colgroup>
+							<col width="20%">
+							<col width="30%">
+							<col width="20%">
+							<col width="30%">
+						</colgroup>
+						<tr style="font-size: 20px; text-align: center;">
+							<th>사진</th>
+							<th>상품이름</th>
+							<th>수량</th>
+							<th>주문금액</th>
+						</tr>
+						<tr>
+							<td><img src="${productThumbnail}" width="200" height="240"></td>
+							<td>${productName}</td>
+							<td>${productQuantity}</td>
+							<td>${productQuantity * productPrice}</td>
+						</tr>
+					</table>
+				</div>
+				<br> <br>
+				<div id="shippingInfo">
+					<h1>배송정보</h1>
+					<table 
+						style="border-left: none; border-right: none; width: 100%; margin-left: auto; margin-right: auto;">
+						<colgroup>
+							<col width="30%">
+							<col width="70%">
+						</colgroup>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<th>배송지 선택</th>
+							<td><input type="radio" name="addressType" value="1" checked><span
+								style="margin-right: 2em;"> 회원정보와 동일</span><input type="radio"
+								name="addressType" value="2"><span
+								style="margin-right: 2em;"> 새 배송지</span> <input type="radio"
+								name="addressType" value="3"><span
+								style="margin-right: 2em;"> 기존 배송지</span></td>
+						</tr>
+						<tr>
+							<th>배송지 주소</th>
+							<td><input type="text" name="shippingAddress" id=""
+								size="50" required></td>
+						</tr>
+						<tr>
+							<th>받는 사람</th>
+							<td><input type="text" name="recipientName" id="" size="50"
+								required></td>
+						</tr>
+						<tr>
+							<th>연락처</th>
+							<td><input type="text" name="phoneNumber" id="" size="50"
+								required></td>
+						</tr>
+						<tr>
+							<th>배송 메모</th>
+							<td><input type="text" name="shippingComment" id=""
+								size="50"></td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2"><div id="addressList" style="display: none;"></div></td>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<th colspan="2"><input type="submit" onclick="purchase"
+								value="결제하기"></th>
+						</tr>
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				<br>
 
-		</form>
-		<input type="submit" onclick="purchase" value="결제하기">
+			</form>
+		</div>
 	</div>
 
 	<script>
@@ -155,6 +190,7 @@
 	           .then(result => {
 	        	   const table = document.createElement('table');
 	        	   table.setAttribute('border', '1');
+	        	   table.setAttribute('style','margin-left: auto; margin-right: auto;');
 	        	   addressList.appendChild(table);
 	        	   
 	        	   // thead

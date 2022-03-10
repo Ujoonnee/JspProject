@@ -6,7 +6,7 @@ public interface CartService {
 
 	List<CartVO> selectCartList();
 
-	List<CartVO> selectCart(CartVO vo);
+	List<CartListVO> selectCart(CartVO vo);
 
 	int insertCart(CartVO vo);
 

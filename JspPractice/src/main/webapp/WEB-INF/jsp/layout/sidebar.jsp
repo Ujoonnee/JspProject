@@ -7,7 +7,7 @@
 				src="img/core-img/search.png" alt=""> Search</a></li>
 		<li>&nbsp;</li>
 		 -->
-		<li ><a href="productList.do"><h2>All Products</h2></a></li>
+		<li><a href="productList.do"><h2>All Products</h2></a></li>
 		<li>&nbsp;</li>
 		<li>&nbsp;</li>
 		<li><h2>Category</h2></li>

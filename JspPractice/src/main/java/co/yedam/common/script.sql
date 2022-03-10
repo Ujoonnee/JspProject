@@ -86,12 +86,12 @@ create table products(
 
 create sequence product_serial_seq;
 
-insert into products values(product_serial_seq.nextVal,'product1','category 1','category 1-1','images/product/1.jpg','images/product/1_detail.jpg',10,1000);
-insert into products values(product_serial_seq.nextVal,'product2','category 1','category 1-2','images/product/2.jpg','images/product/2_detail.jpg',50,400);
-insert into products values(product_serial_seq.nextVal,'product3','category 2','category 2-1','images/product/3.jpg','images/product/3_detail.jpg',100,3000);
-insert into products values(product_serial_seq.nextVal,'product4','category 2','category 2-3','images/product/4.jpg','images/product/4_detail.jpg',50,100000);
-insert into products values(product_serial_seq.nextVal,'product5','category 3','category 3-2','images/product/5.jpg','images/product/5_detail.jpg',30,5000);
-insert into products values(product_serial_seq.nextVal,'product4','category 3','category 3-3','images/product/6.jpg','images/product/6_detail.jpg',5,100);
+insert into products values(product_serial_seq.nextVal,'product1','shirts','t_shirt','images/product/1.jpg','images/product/1_detail.jpg',10,1000);
+insert into products values(product_serial_seq.nextVal,'product2','shirts','y_shirt','images/product/2.jpg','images/product/2_detail.jpg',50,400);
+insert into products values(product_serial_seq.nextVal,'product3','outers','jumper','images/product/3.jpg','images/product/3_detail.jpg',100,3000);
+insert into products values(product_serial_seq.nextVal,'product4','outers','fleece','images/product/4.jpg','images/product/4_detail.jpg',50,100000);
+insert into products values(product_serial_seq.nextVal,'product5','pants','sweats','images/product/5.jpg','images/product/5_detail.jpg',30,5000);
+insert into products values(product_serial_seq.nextVal,'product4','pants','jeans','images/product/6.jpg','images/product/6_detail.jpg',5,100);
 
 
 

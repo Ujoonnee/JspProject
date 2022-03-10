@@ -25,6 +25,7 @@ import co.yedam.product.ProductInsert;
 import co.yedam.product.ProductInsertForm;
 import co.yedam.product.ProductList;
 import co.yedam.product.ProductUpdate;
+import co.yedam.product.ProductUpdateForm;
 import co.yedam.product.SearchProduct;
 import co.yedam.purchase.PurchaseHistory;
 import co.yedam.purchase.PurchaseHistoryDetail;
@@ -98,6 +99,7 @@ public class FrontController extends HttpServlet {
         map.put("/searchProduct.do", new SearchProduct()); // 상품 검색
         map.put("/productInsertForm.do", new ProductInsertForm());    // 상품 등록 페이지(관리자)
         map.put("/productInsert.do", new ProductInsert());    // 상품 등록(관리자)
+        map.put("/productUpdateForm.do", new ProductUpdateForm()); //16 상품 수정(관리자)
         map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
         map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
         map.put("/orderPage.do", new OrderPage()); //18 주문 페이지

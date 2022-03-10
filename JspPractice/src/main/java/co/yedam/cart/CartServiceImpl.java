@@ -38,21 +38,20 @@ public class CartServiceImpl extends DAO implements CartService {
 	}
 	
 	@Override
-	public List<CartVO> selectCart(CartVO vo) {
-		String sql = "SELECT * FROM cart WHERE user_id = ?";
-		List<CartVO> list = new ArrayList<>();
+	public List<CartListVO> selectCart(CartVO vo) {
+		String sql = "select p.product_name, p.product_thumbnail, p.product_price, c.product_quantity from products p, cart c where p.product_serial = c.product_serial and c.user_id = ?";
+		List<CartListVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
-				CartVO cart = new CartVO();
-				cart.setUserId(rs.getString("user_id"));
-				cart.setProductSerial(rs.getInt("product_serial"));
-				cart.setProductQuantity(rs.getInt("product_quantity"));
+				CartListVO cart = new CartListVO();
+				cart.setProductName(rs.getString("product_name"));
+				cart.setProductThumbnail(rs.getString("product_thumbnail"));
 				cart.setProductPrice(rs.getInt("product_price"));
-				cart.setCartDate(rs.getString("cart_date"));
+				cart.setProductQuantity(rs.getInt("product_quantity"));
 				
 				list.add(cart);
 			}

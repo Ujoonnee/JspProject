@@ -78,7 +78,7 @@
 					</colgroup>
 
 					<c:forEach var="list" items="${searchList}">
-						<tbody>
+						<tbody onclick="location.href='productDetail.do?productSerial=${list.productSerial}'">
 							<tr style="border-top: 1px solid lightgrey;">
 								<td>&nbsp;</td>
 							</tr>
