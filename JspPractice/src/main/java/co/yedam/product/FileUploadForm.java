@@ -32,7 +32,7 @@ public class FileUploadForm implements Command{
 		
 		try {
 			
-			List<FileItem> items = upload.parseRequest(factory);
+			List<FileItem> items = upload.parseRequest(request);
 			
 			for(int i=0; i<items.size(); i++) {
 				FileItem fileItem = (FileItem) items.get(i);
