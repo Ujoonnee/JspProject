@@ -5,16 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Command;
 
-<<<<<<< HEAD
-public class ProductUpdateForm implements Command {
 
-	@Override
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-=======
 public class ProductUpdateForm implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -26,5 +17,5 @@ public class ProductUpdateForm implements Command{
 		request.setAttribute("productSelect", productSelect);
 		return "product/productUpdateForm.jsp";
 	}
->>>>>>> branch 'main' of https://github.com/Ujoonnee/JspProject.git
+
 }
