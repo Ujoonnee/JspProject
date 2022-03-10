@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>memberList.jsp</title>
 
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/sidebar.jsp"/>
 
 	<div align = "left"> 회원 리스트</div>

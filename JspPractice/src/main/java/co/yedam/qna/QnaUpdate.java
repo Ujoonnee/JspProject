@@ -12,14 +12,25 @@ public class QnaUpdate implements Command {
 		QnaService dao = new QnaServiceImpl();
 		
 		String date = request.getParameter("qnaDate");
-		System.out.println(date);
+		System.out.println("QnaUpdate쪽 request date값 : "+date);
 		String content = request.getParameter("responseContent");
-		System.out.println(content);
+		System.out.println("QnaUpdate쪽 request 내용값 : "+content);
 		
+		System.out.println("-----내용끝-----");
 		
-		dao.ResponseUpdateQna(content,date);
+		dao.responseUpdateQna(content,date);
 		
-		return "qnaList.do";
+		System.out.println("update done");
+		
+		dao = new QnaServiceImpl();
+		QnaVO qna = new QnaVO();
+		qna.setQnaDate(date);
+		qna = dao.selectofQnaData(qna);
+		
+		//key값 list
+		request.setAttribute("qna", qna);
+		
+		return "qna/qnaDetail.jsp";
 	}
 
 }

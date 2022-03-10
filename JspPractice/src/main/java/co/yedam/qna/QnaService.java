@@ -10,5 +10,6 @@ public interface QnaService {
 	 public QnaVO selectofOrderNum(QnaVO vo);
 	 public QnaVO selectofQnaData(QnaVO vo);
 	 public List<QnaVO> strSelectofDate (String qnaDate);
-	 public int ResponseUpdateQna(String date, String content);
+	 public int responseUpdateQna(String date, String content);
+	 public List<QnaVO> searchQna(String type, String text);
 }

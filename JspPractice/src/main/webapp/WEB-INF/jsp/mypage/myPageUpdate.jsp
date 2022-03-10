@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>myPageUpdate.jsp</title>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/myPageSidebar.jsp"/>
 <form action="myPageUpdate.do" id="frm" method="post">
 	

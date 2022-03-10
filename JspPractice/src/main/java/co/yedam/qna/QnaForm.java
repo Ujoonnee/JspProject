@@ -17,6 +17,7 @@ public class QnaForm implements Command{
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		System.out.println("qnqFormdo");
+		System.out.println("오더넘버"+request.getAttribute("orderNum"));
 		UserVO user = (UserVO) session.getAttribute("user");
 		request.setAttribute("user", user);
 
@@ -25,6 +26,7 @@ public class QnaForm implements Command{
 		order.setUserId(user.getUserId());
 		List<OrderVO> list = dao.selectOrder(order);
 		request.setAttribute("orderList", list);
+		
 		if(request.getParameter("qnaDate") != null) {
 			request.setAttribute("qnaDate",request.getParameter("qnaDate"));
 		}

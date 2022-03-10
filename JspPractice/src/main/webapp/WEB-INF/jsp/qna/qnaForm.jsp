@@ -9,8 +9,10 @@
 <script>
 	
 </script>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
+<jsp:include page="../layout/myPageSidebar.jsp"/>
 	<div align="center">
 		<form id="frm" name="frm" action="qnaUserInsert.do" method="post">
 			<table border='1'>
@@ -19,7 +21,7 @@
 				</tr>
 				<tr>
 					<td>문의유형</td>
-					<td><select id="qna_type" name="qna_type">
+					<td><select id="qna_type" name="qnaType">
 							<option value="">선택하세요.</option>
 							<option value="change">교환</option>
 							<option value="refund">환불</option>
@@ -33,19 +35,18 @@
 				</tr>
 				<tr>
 					<td rowspan='2'>주문번호</td>
-					<td><input type="text" id="order_num" name="order_num"
-						placeholder="serailNum을 입력하세요."> &nbsp; <input
-						type='button' id='orderchk' value='조회' data-checked="false"></td>
+					<td rowspan='2'>
+					<select name= "orderNum" id="orderNum" >
+						<option value="">선택하세요.</option>
+						<c:forEach var= "order" items = "${orderList }" >
+							<option value="${order.orderNum }">${order.orderNum }</option>
+						</c:forEach>
+					</select></td>
 					<td>휴대전화</td>
 					<td>${user.userTel }</td>
 				</tr>
 				<tr>
-					<td><select name= "purchaseList" id="purchaseList" >
-						<option value="">선택하세요.</option>
-						<c:forEach var= "order" items = "${orderList }" >
-							<option id = "product_serial" value="${order.productSerial }">${order.productSerial }</option>
-						</c:forEach>
-					</select></td>
+					
 					<td>이메일</td>
 					<td>${user.userEmail }</td>
 				</tr>
@@ -64,8 +65,8 @@
 				</tr>
 			
 			</table>
-			<input type="hidden" id="qna_status" name="qna_status" value="답변대기">
-			<input type="hidden" id="user_id" name="user_id" value = "${user.userId }">
+			<input type="hidden" id="qnaStatus" name="qnaStatus" value="답변대기">
+			<input type="hidden" id="user_id" name="userId" value = "${user.userId }">
 			<button type='button' onclick="history.back()">뒤로가기</button>&nbsp;
 			<input type='reset' value='취소'>&nbsp;
 			<button type='button' id = "register" >작성하기</button>
@@ -75,7 +76,6 @@
 	
 	<script>
 	function frmChk(){
-		
 		/* if(qna_type.value != null){
 			alert('문의사항은 필수 입력 항목입니다.')
 			return;

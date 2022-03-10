@@ -25,7 +25,6 @@ public class QnaDetail implements Command{
 		QnaVO qna = new QnaVO();
 		
 		qna.setQnaDate(request.getParameter("selectedQna"));
-		System.out.println(qna.getQnaDate());
 		qna = dao.selectofQnaData(qna);
 		//key값 list
 		request.setAttribute("qna", qna);

@@ -48,7 +48,8 @@ public class OrderServiceImpl extends DAO implements OrderService {
 			while(rs.next()) {
 				OrderVO order = new OrderVO();
 				order.setOrderNum(rs.getString("order_num"));
-				order.setProductName(rs.getString("product_serial"));
+				order.setUserId(rs.getString("user_id"));
+				order.setProductSerial(rs.getInt("product_serial"));
 				order.setUserId(rs.getString("product_quantity"));
 				order.setOrderDate(rs.getString("order_date"));
 				

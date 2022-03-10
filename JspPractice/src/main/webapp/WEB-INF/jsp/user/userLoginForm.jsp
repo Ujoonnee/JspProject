@@ -109,6 +109,7 @@ pageEncoding="UTF-8"%>
             name="userId"
             placeholder="User name or Email"
             required
+            value=""
           />
           <input
             type="password"
@@ -117,6 +118,7 @@ pageEncoding="UTF-8"%>
             placeholder="Enter Password"
             style="margin-bottom: 30px;"
             required
+            value=""
           />
           <div id="btnBox" align="center">
 	          <button class="button">Login</button>

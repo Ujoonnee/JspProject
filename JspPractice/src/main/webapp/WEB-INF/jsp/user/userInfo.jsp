@@ -8,9 +8,9 @@
 <title>memberInfo.jsp</title>
 <link rel="stylesheet" href="css/core-style.css">
 <link rel="stylesheet" href="style.css">
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/myPageSidebar.jsp"/>
 	<div align="left">
 		<div>
