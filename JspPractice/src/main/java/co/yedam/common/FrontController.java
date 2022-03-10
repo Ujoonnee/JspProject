@@ -37,7 +37,6 @@ import co.yedam.qna.QnaResponse;
 import co.yedam.qna.QnaUpdate;
 import co.yedam.qna.QnaUserInsert;
 import co.yedam.shippingAddress.ShippingAddressListAjax;
-import co.yedam.shippingAddress.ShippingInfo;
 import co.yedam.user.UserInfo;
 import co.yedam.user.UserList;
 import co.yedam.user.UserLogin;

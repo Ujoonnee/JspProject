@@ -30,9 +30,11 @@ public class ShippingAddressListAjax implements Command {
 			System.out.println(shippingAddressVO.getShippingAddress());
 		}
 		
+		Gson gson = new Gson();
+		String str = gson.toJson(list);
 		request.setAttribute("list", list);
 		
-		return "shippingAddressList/shippingAddressList.jsp";
+		return "ajax:" + str;
 	}
 
 }

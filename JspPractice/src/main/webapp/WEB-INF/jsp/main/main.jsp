@@ -85,7 +85,7 @@
 
 			<!-- Cart Menu -->
 			<div class="cart-fav-search mb-100">
-				<a href="cart.do" class="cart-nav"><img
+				<a href="w" class="cart-nav"><img
 					src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
 			</div>
 
@@ -136,7 +136,7 @@
 					<div class="single_widget_area">
 						<!-- Logo -->
 						<div class="footer-logo mr-50">
-							<a href="main.do"><img src="img/core-img/logo2.png" alt=""></a>
+							<a href="main.do"><img src="img/core-img/logo3.png" alt=""></a>
 						</div>
 						<!-- Copywrite Text -->
 						<p class="copywrite">
@@ -167,20 +167,6 @@
 									aria-label="Toggle navigation">
 									<i class="fa fa-bars"></i>
 								</button>
-								<div class="collapse navbar-collapse" id="footerNavContent">
-									<ul class="navbar-nav ml-auto">
-										<li class="nav-item active"><a class="nav-link"
-											href="main.do">Home</a></li>
-										<li class="nav-item"><a class="nav-link" href="shop.html">Shop</a>
-										</li>
-										<li class="nav-item"><a class="nav-link"
-											href="product-details.html">Product</a></li>
-										<li class="nav-item"><a class="nav-link" href="cart.do">Cart</a>
-										</li>
-										<li class="nav-item"><a class="nav-link"
-											href="checkout.html">Checkout</a></li>
-									</ul>
-								</div>
 							</nav>
 						</div>
 					</div>

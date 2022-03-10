@@ -1,9 +1,14 @@
 package co.yedam.user;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.yedam.common.Command;
+import co.yedam.product.ProductService;
+import co.yedam.product.ProductServiceImpl;
+import co.yedam.product.ProductVO;
 
 public class UserLogin implements Command {
 	@Override
@@ -23,6 +28,12 @@ public class UserLogin implements Command {
 			System.out.println(vo.getUserName() + " login successful");
 			// 로그인 성공하면 세션에 로그인 한 아이디 정보 저장
 			session.setAttribute("user", vo);  
+			
+			ProductService pdao = new ProductServiceImpl();
+
+			List<ProductVO> list = pdao.selectProductList();
+			request.setAttribute("list", list);
+			
 			return "main/main.jsp";
 			
 		} else {
