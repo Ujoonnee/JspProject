@@ -20,6 +20,8 @@ import co.yedam.mypage.MyPageUpdate;
 import co.yedam.order.OrderAjax;
 import co.yedam.order.OrderList;
 import co.yedam.order.OrderPage;
+import co.yedam.product.FileUploadForm;
+import co.yedam.product.FileUpload;
 import co.yedam.product.ProductDetail;
 import co.yedam.product.ProductInsert;
 import co.yedam.product.ProductInsertForm;
@@ -105,6 +107,10 @@ public class FrontController extends HttpServlet {
         map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
         map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
         map.put("/orderPage.do", new OrderPage()); //18 주문 페이지
+        map.put("/fileUploadForm.do", new FileUploadForm());
+        map.put("/fileUpload.do", new FileUpload());
+        
+        
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
