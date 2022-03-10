@@ -25,6 +25,7 @@ import co.yedam.product.ProductInsert;
 import co.yedam.product.ProductInsertForm;
 import co.yedam.product.ProductList;
 import co.yedam.product.ProductUpdate;
+import co.yedam.product.ProductUpdateForm;
 import co.yedam.product.SearchProduct;
 import co.yedam.purchase.PurchaseHistory;
 import co.yedam.purchase.PurchaseHistoryDetail;
@@ -33,6 +34,7 @@ import co.yedam.qna.QnaAdmin;
 import co.yedam.qna.QnaDetail;
 import co.yedam.qna.QnaForm;
 import co.yedam.qna.QnaList;
+import co.yedam.qna.QnaListAjax;
 import co.yedam.qna.QnaResponse;
 import co.yedam.qna.QnaUpdate;
 import co.yedam.qna.QnaUserInsert;
@@ -86,6 +88,7 @@ public class FrontController extends HttpServlet {
 		map.put("/addCart.do", new AddCart()); //11 마이페이지(장바구니)
 		
 		map.put("/qnaList.do", new QnaList()); //12 마이페이지(1:1문의)
+		map.put("/qnaListAjax.do", new QnaListAjax()); //12 마이페이지(1:1문의)
 	    map.put("/qnaUserInsert.do", new QnaUserInsert()); //12 마이페이지(1:1문의)
 	    map.put("/qnaAdmin.do", new QnaAdmin()); //13 마이페이지(1:1문의 단일 세부내용)
 	    map.put("/qnaDetail.do", new QnaDetail()); //13 마이페이지(1:1문의 단일 세부내용)
@@ -98,6 +101,7 @@ public class FrontController extends HttpServlet {
         map.put("/searchProduct.do", new SearchProduct()); // 상품 검색
         map.put("/productInsertForm.do", new ProductInsertForm());    // 상품 등록 페이지(관리자)
         map.put("/productInsert.do", new ProductInsert());    // 상품 등록(관리자)
+        map.put("/productUpdateForm.do", new ProductUpdateForm());
         map.put("/productUpdate.do", new ProductUpdate()); //16 상품 수정(관리자)
         map.put("/productDetail.do", new ProductDetail()); //17 상품 세부 정보
         map.put("/orderPage.do", new OrderPage()); //18 주문 페이지

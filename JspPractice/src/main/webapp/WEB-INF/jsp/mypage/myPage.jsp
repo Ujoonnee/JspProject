@@ -6,11 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>myPageCheck.jsp</title>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/myPageSidebar.jsp"/>
-
 <form action="myPageCheck.do" id="frm">
 	<input type="hidden"  value="${user.userId }">
 	<input type="password" name="userPw" placeholder="pw 확인"><input type="submit" value="검색">

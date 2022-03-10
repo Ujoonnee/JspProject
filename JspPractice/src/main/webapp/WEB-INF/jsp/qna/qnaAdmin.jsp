@@ -57,8 +57,10 @@
 		} 
 	
 	</script>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
+<jsp:include page="../layout/myPageSidebar.jsp"/>
 <div>
 <b>주문목록</b>
 <form action = "qnaAdmin.do" method="post">

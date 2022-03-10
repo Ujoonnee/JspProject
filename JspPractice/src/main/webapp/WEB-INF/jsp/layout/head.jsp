@@ -32,6 +32,18 @@
 				</div>
 			</div>
 		</c:when>
+		<c:when test="${user.userAuthority eq 'admin'}">
+			<div>
+				<div
+					style="display: inline-block; position: absolute; top: 10px; right: 100px;">
+					<a href="myPage.do"><h6>관리자님</h6></a>
+				</div>
+				<div
+					style="display: inline-block; position: absolute; top: 10px; right: 20px;">
+					<a href="userLogout.do"><h6>로그아웃</h6></a>
+				</div>
+			</div>
+		</c:when>
 		<c:otherwise>
 			<div>	
 				<div

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>myPageCheckFail.jsp</title>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
 <jsp:include page="../layout/myPageSidebar.jsp"></jsp:include>

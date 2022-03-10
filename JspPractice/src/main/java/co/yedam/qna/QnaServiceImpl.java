@@ -16,7 +16,7 @@ public class QnaServiceImpl extends DAO implements QnaService{
 	 
 	 @Override
 	 public List<QnaVO> selectQnaList(String userId){
-		 String sql = "select * from qna where user_id = ?";
+		 String sql = "select * from qna where user_id = ? order by 4 desc";
 		 List<QnaVO> list = new ArrayList<>();
 		 
 		 try {
@@ -74,7 +74,7 @@ public class QnaServiceImpl extends DAO implements QnaService{
 	 }
 	 @Override
 	 public List<QnaVO> selectAllList(){
-		 String sql = "select * from qna";
+		 String sql = "select * from qna order by 4 desc";
 		 List<QnaVO> list = new ArrayList<>();
 		 try {
 			 psmt = conn.prepareStatement(sql);
@@ -91,12 +91,8 @@ public class QnaServiceImpl extends DAO implements QnaService{
 				 qna.setQnaPhoto(rs.getString("qna_photo"));
 				 qna.setQnaStatus(rs.getString("qna_status"));
 				 qna.setResponseDate(rs.getString("response_date"));
-				 System.out.println("qna selectAll");
 				 
 				 list.add(qna);
-				 for (QnaVO qnaVO : list) {
-					qnaVO.getQnaTitle();
-				}
 			 }
 		 }catch(SQLException e) {
 			 e.printStackTrace();
@@ -105,7 +101,41 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		 }
 		 return list;
 	 }
-
+	 @Override
+	 public List<QnaVO> searchQna(String type, String text) {
+		 String sql = "select * from qna where "+ type +" like ?";
+		 List<QnaVO> list = new ArrayList<>();
+		 
+		 try {
+			 psmt = conn.prepareStatement(sql);
+			 psmt.setString(1, "%"+text+"%");
+			 
+			 rs = psmt.executeQuery();
+			 
+			 while(rs.next()) {
+				 
+				 QnaVO qna = new QnaVO();
+				 
+				 qna.setUserId(rs.getString("user_id"));
+				 qna.setQnaType(rs.getString("qna_type"));
+				 qna.setOrderNum(rs.getString("order_num"));
+				 qna.setQnaDate(rs.getString("qna_date"));
+				 qna.setQnaTitle(rs.getString("qna_title"));
+				 qna.setQnaContent(rs.getString("qna_content"));
+				 qna.setQnaPhoto(rs.getString("qna_photo"));
+				 qna.setQnaStatus(rs.getString("qna_status"));
+				 qna.setResponseDate(rs.getString("response_date"));
+				 
+				 list.add(qna);
+			 }
+		 }catch(SQLException e) {
+			 e.printStackTrace();
+		 }finally {
+			 close();
+		 }
+		 return list;
+	 }
+	 
 	 @Override
 	 public QnaVO selectofOrderNum(QnaVO vo){
 		 String sql = "select * from qna where order_num = ?";
@@ -137,9 +167,10 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		 }
 		 return vo;
 	 }
+	 
 	 @Override
-	 public int ResponseUpdateQna(String content, String date){
-		 String sql = "update qna set qna_content = ? where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
+	 public int responseUpdateQna(String content, String date){
+		 String sql = "update qna set qna_content = ?, qna_status = '답변완료',  response_date = sysdate where qna_date = to_date(?,'YYYY-MM-DD HH24:MI:SS')";
 		 int r = 0;
 		 try {
 			 psmt = conn.prepareStatement(sql);
@@ -216,54 +247,6 @@ public class QnaServiceImpl extends DAO implements QnaService{
 		 }
 		 return list;
 	 }
-//	 qna검색기능
-//	 public List<QnaVO> find(String type, String keyword)
-//	 throws SQLException{
-//		 try {
-//			 String colName="";
-//			 switch(type) {
-//			 	case "1" : colName="order_num";
-//			 	break;
-//			 	case "2" : colName="user_id";
-//			 	break;
-//			 }
-//			 conn =DBUtil.getCon();
-//			 
-//			 
-//			 return null;
-//		 }finally {
-//			 close();
-//		 }
-//	 }
-	 
-//	 public List<QnaVO> selectAdminQnaList(){
-//		 String sql = "select * from qna";
-//		 List<QnaVO> list = new ArrayList<>();
-//		 try {
-//			 psmt = conn.prepareStatement(sql);
-//			 rs = psmt.executeQuery();
-//			 
-//			 while(rs.next()) {
-//				 QnaVO qna = new QnaVO();
-//				 qna.setUserId(rs.getString("user_id"));
-//				 qna.setQnaType(rs.getString("qna_type"));
-//				 qna.setOrderNum(rs.getString("order_num"));
-//				 qna.setQnaDate(rs.getString("qna_date"));
-//				 qna.setQnaTitle(rs.getString("qna_title"));
-//				 qna.setQnaContent(rs.getString("qna_content"));
-//				 qna.setQnaPhoto(rs.getString("qna_photo"));
-//				 qna.setQnaStatus(rs.getString("qna_status"));
-//				 qna.setResponseDate(rs.getString("response_date"));
-//				 
-//				 list.add(qna);
-//			 }
-//		 }catch(SQLException e) {
-//			 e.printStackTrace();
-//		 }finally {
-//			 close();
-//		 }
-//		 return list;
-//	 }
 	 
 	 
 	 private void close() {

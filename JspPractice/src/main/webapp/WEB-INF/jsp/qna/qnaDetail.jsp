@@ -7,9 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>qnaDetail.jsp</title>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/myPageSidebar.jsp"/>
 	<div>
 		<table border='1'>

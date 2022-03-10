@@ -121,10 +121,10 @@ create table qna (
 );
 
 
-insert into qna values('asdf','취소','1.1.11111111',sysdate,'asdf qna1 title','asdf qna1 content','asdf qna photo1','답변대기',null);
-insert into qna values('asdf','환불','1.2.22222222',sysdate,'asdf qna2 title','asdf qna2 content','asdf qna photo1','답변대기',null);
-insert into qna values('asdf','취소','2.1.33333333',sysdate,'asdf qna1 title','user1 qna1 content','user1 qna1 photo','답변완료',to_date('20220305','YYYYMMDD'));
-insert into qna values('asdf','기타','2.2.44444444',sysdate,'asdf qna2 title','user1 qna2 content','user1 qna2 photo','답변대기',null);
+insert into qna values('asdf','cancel','1.1.11111111',sysdate,'asdf qna1 title','asdf qna1 content','asdf qna photo1','답변대기',null);
+insert into qna values('asdf','refund','1.2.22222222',sysdate,'asdf qna2 title','asdf qna2 content','asdf qna photo1','답변대기',null);
+insert into qna values('asdf','cancel','2.1.33333333',sysdate,'asdf qna1 title','user1 qna1 content','user1 qna1 photo','답변완료',to_date('20220305','YYYYMMDD'));
+insert into qna values('asdf','etc','2.2.44444444',sysdate,'asdf qna2 title','user1 qna2 content','user1 qna2 photo','답변대기',null);
 
 
 

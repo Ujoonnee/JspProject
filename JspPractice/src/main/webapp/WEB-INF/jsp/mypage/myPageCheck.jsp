@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>myPageCheck.jsp</title>
+<jsp:include page="../layout/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../layout/head.jsp"/>
 <jsp:include page="../layout/myPageSidebar.jsp"/>
 <form>
 	<c:if test="${not empty userId }">

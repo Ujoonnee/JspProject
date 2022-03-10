@@ -16,13 +16,9 @@ public class QnaList implements Command {
 		HttpSession session = request.getSession();
 		
 		UserVO user = (UserVO) session.getAttribute("user");
-		System.out.println(user.getUserAuthority());
 		
 		if(user.getUserAuthority().equals("admin")) {
 			List<QnaVO> list = dao.selectAllList();
-			for (QnaVO qnaVO : list) {
-				System.out.println(qnaVO.getQnaTitle()); 
-			}
 			request.setAttribute("list",list);
 			return "qna/qnaList.jsp";
 		}else {
