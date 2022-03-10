@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Command;
 
-public class ProductUpdate implements Command{
+public class ProductUpdateForm implements Command{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		int productSerial = Integer.parseInt(request.getParameter("productSerial"));
@@ -13,6 +13,6 @@ public class ProductUpdate implements Command{
 		product.setProductSerial(productSerial);
 		ProductVO productSelect = service.selectProduct(product);
 		request.setAttribute("productSelect", productSelect);
-		return "product/productUpdate.jsp";
+		return "product/productUpdateForm.jsp";
 	}
 }
