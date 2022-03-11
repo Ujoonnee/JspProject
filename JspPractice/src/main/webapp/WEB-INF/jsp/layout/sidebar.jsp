@@ -13,18 +13,18 @@
 		<li><h2>Category</h2></li>
 		<li>&nbsp;</li>
 		<li><h4>Shirts</h4></li>
-		<li><a href="searchProduct.do?t_shirt">T-shirts</a></li>
-		<li><a href="searchProduct.do?y_shirt">Y-shirts</a></li>
+		<li><a href="searchProduct.do?keyword=1-1">T-shirts</a></li>
+		<li><a href="searchProduct.do?keyword=1-2">Y-shirts</a></li>
 		<li>──────────────</li>
 		<li>&nbsp;</li>
 		<li><h4>Outers</h4></li>
-		<li><a href="searchProduct.do?jumper">Jumpers</a></li>
-		<li><a href="searchProduct.do?fleece">Fleece</a></li>
+		<li><a href="searchProduct.do?keyword=2-1">Jumpers</a></li>
+		<li><a href="searchProduct.do?keyword=2-3">Fleece</a></li>
 		<li>──────────────</li>
 		<li>&nbsp;</li>
 		<li><h4>Trousers</h4></li>
-		<li><a href="searchProduct.do?sweat">Sweats</a></li>
-		<li><a href="searchProduct.do?jean">Jeans</a></li>
+		<li><a href="searchProduct.do?keyword=3-2">Sweats</a></li>
+		<li><a href="searchProduct.do?keyword=3-3">Jeans</a></li>
 		<li>&nbsp;</li>
 		<li>&nbsp;</li>
 	</ul>

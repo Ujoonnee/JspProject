@@ -72,7 +72,7 @@ public class ProductServiceImpl extends DAO implements ProductService{
 	}
 	
 	public List<ProductVO> searchProductList(String keyword) {
-		String sql = "select * from products where UPPER(product_name) like UPPER(?) or UPPER(product_category1) like UPPER(?) or UPPER(product_category2) like UPPER(?)";
+		String sql = "select * from products where product_name like ? or product_category1 like ? or product_category2 like ?";
 		List<ProductVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);

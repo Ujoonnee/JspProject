@@ -6,15 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>myPageCheck.jsp</title>
-<<<<<<< HEAD
 <link rel="stylesheet" href="css/core-style.css">
 <link rel="stylesheet" href="style.css">
-=======
-<jsp:include page="../layout/head.jsp"/>
->>>>>>> branch 'main' of https://github.com/Ujoonnee/JspProject.git
 </head>
 <body>
-<<<<<<< HEAD
 
 	<jsp:include page="../layout/head.jsp" />
 	<div class="main-content-wrapper d-flex clearfix">
