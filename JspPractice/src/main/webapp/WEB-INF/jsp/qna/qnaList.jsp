@@ -7,25 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>qna.jsp</title>
+	<jsp:include page="../layout/head.jsp" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="css/core-style.css">
 <link rel="stylesheet" href="style.css">
-	<jsp:include page="../layout/head.jsp" />
 </head>
 <body>
 	<jsp:include page="../layout/myPageSidebar.jsp" />
 	<form action="qnaDetail.do" id="frm" method="post">
 		<input type="hidden" id="selectedQna" name="selectedQna" value="">
-		<table border="1">
+		<table border="1" class = "container mt-3">
 			<thead>
 				<tr>
-					<th colspan="5" style="text-align: center; font-size: 25px;">
+					<th colspan="5" style="text-align: center; font-size: 25px; border-bottom : solid 1px;">
 						<div style="display: block;">1:1문의</div>
 					</th>
 				</tr>
-				<tr style="border: none;">
+				<tr style="border: none;" >
 					<td>&nbsp;</td>
 				<tr>
-				<tr style="border-top: none; border-bottom: none;">
+				<tr style="border-top: none; border-bottom: none; ">
 					<th style="text-align: center; font-size: 25px;"><select
 						name="searchType" id="searchType">
 							<option value="qna_type">문의유형</option>
@@ -53,6 +55,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<div >
 				<c:forEach var="qna" items="${list}">
 					<tr align="center" class="qnaInfo">
 						<td width="20%">${qna.qnaType }</td>
@@ -62,11 +65,14 @@
 						<td width="20%">${qna.qnaStatus }</td>
 					</tr>
 				</c:forEach>
+				</div>
 			</tbody>
 		</table>
+		<div > 
 		<input type="button" onclick="location.href='main.do'" value="main">
 		<input type="button" onclick="location.href='qnaForm.do'"
 			value="1:1문의하기">
+		</div>
 	</form>
 	<script>
 	

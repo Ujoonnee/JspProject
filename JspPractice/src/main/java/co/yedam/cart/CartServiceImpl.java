@@ -39,7 +39,7 @@ public class CartServiceImpl extends DAO implements CartService {
 	
 	@Override
 	public List<CartListVO> selectCart(CartVO vo) {
-		String sql = "select p.product_name, p.product_thumbnail, p.product_price, c.product_quantity from products p, cart c where p.product_serial = c.product_serial and c.user_id = ?";
+		String sql = "select p.product_name, c.product_Serial, p.product_thumbnail, p.product_price, c.product_quantity from products p, cart c where p.product_serial = c.product_serial and c.user_id = ?";
 		List<CartListVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -50,6 +50,7 @@ public class CartServiceImpl extends DAO implements CartService {
 				CartListVO cart = new CartListVO();
 				cart.setProductName(rs.getString("product_name"));
 				cart.setProductThumbnail(rs.getString("product_thumbnail"));
+				cart.setProductSerial(rs.getInt("product_serial"));
 				cart.setProductPrice(rs.getInt("product_price"));
 				cart.setProductQuantity(rs.getInt("product_quantity"));
 				

@@ -28,7 +28,6 @@ public class AddCart implements Command {
 		dao = new CartServiceImpl();
 		CartVO cart = new CartVO();
 		cart.setUserId(user.getUserId());
-		
 		List<CartListVO> list = dao.selectCart(cart);
 		
 		request.setAttribute("list", list);

@@ -20,7 +20,6 @@
 <!-- Core Style CSS -->
 <link rel="stylesheet" href="css/core-style.css">
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -126,7 +125,7 @@
 								<tbody>
 									<c:forEach var="cart" items="${list }">
 										<tr>
-											<td class="cart_product_img"><a href="#"><img
+											<td class="cart_product_img"><a href='productDetail.do?productSerial=${cart.productSerial }'><img
 													src="${cart.productThumbnail }" alt="Product"></a></td>
 											<td class="cart_product_desc">
 												<h5>${cart.productName }</h5>
@@ -136,19 +135,18 @@
 												<div class="qty-btn d-flex">
 													<div class="quantity">
 														<span class="qty-minus"
-															onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
+															onclick="var effect = document.getElementById('id${cart.productSerial }'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
 															class="fa fa-minus" aria-hidden="true"></i></span> <input
-															type="number" class="qty-text" id="qty" step="1" min="1"
-															max="300" name="quantity" value="${cart.productQuantity }"> <span
+															type="number" class="qty-text" id="id${cart.productSerial }" step="1" min="1"
+															max="50" name="quantity" value="${cart.productQuantity }"> <span
 															class="qty-plus"
-															onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
+															onclick="var effect = document.getElementById('id${cart.productSerial }'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
 															class="fa fa-plus" aria-hidden="true"></i></span>
 													</div>
-												</div>
+												</div>	
 											</td>
 										</tr>
 									</c:forEach>
-
 
 									<!-- 
 									<tr>
@@ -184,9 +182,8 @@
 						<div class="cart-summary">
 							<h5>Cart Total</h5>
 							<ul class="summary-table">
-								<li><span>subtotal:</span> <span>$140.00</span></li>
 								<li><span>delivery:</span> <span>Free</span></li>
-								<li><span>total:</span> <span>$140.00</span></li>
+								<li><span>total:</span> <span id ="totalPrice"></span></li>
 							</ul>
 							<div class="cart-btn mt-100">
 								<a href="cart.do" class="btn amado-btn w-100">Checkout</a>
@@ -300,6 +297,24 @@
 	<script src="js/plugins.js"></script>
 	<!-- Active js -->
 	<script src="js/active.js"></script>
+	<script>
+	
+		let priceArray = document,getElementsByClassName('price');
+		let quantityArray = document,getElementsByClassName('qty');
+		
+		let total = 0;
+		for (let i = 0; i < priceArray.length; i++){
+			 total += priceArray[i] * quantiArray[i]
+		}
+
+		let totalSpan = total;
+		
+		document.getElemenetById('totalPrice')
+		
+		
+		
+		
+	</script>
 
 </body>
 

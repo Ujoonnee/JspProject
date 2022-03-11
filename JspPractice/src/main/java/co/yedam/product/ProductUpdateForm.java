@@ -17,8 +17,4 @@ public class ProductUpdateForm implements Command{
 		request.setAttribute("productSelect", productSelect);
 		return "product/productUpdateForm.jsp";
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/heads/PJY
 }

@@ -3,6 +3,7 @@ package co.yedam.cart;
 public class CartListVO {
 	private String productName;
 	private String productThumbnail;
+	private int productSerial;
 	private int productPrice;
 	private int productQuantity;
 	
@@ -17,6 +18,13 @@ public class CartListVO {
 	}
 	public void setProductThumbnail(String productThumbnail) {
 		this.productThumbnail = productThumbnail;
+	}
+	
+	public int getProductSerial() {
+		return productSerial;
+	}
+	public void setProductSerial(int productSerial) {
+		this.productSerial = productSerial;
 	}
 	public int getProductPrice() {
 		return productPrice;

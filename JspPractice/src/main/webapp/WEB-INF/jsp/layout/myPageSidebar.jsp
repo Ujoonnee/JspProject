@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="amado-nav">
 	<ul style="text-align: center;">
-<<<<<<< HEAD
 		<!-- 
 =======
 	<!-- 
@@ -14,12 +13,8 @@
 		 -->
 		<li><a href="myPage.do">회원정보수정</a></li>
 		<li><a href="qnaList.do">1:1 문의</a></li>
-<<<<<<< HEAD
 		<c:if test="${user.userAuthority eq 'admin'}">
 			<li><a href="productInsertForm.do">상품 등록</a></li>
 		</c:if>
-=======
-		<li><a href="productInsertForm.do">상품 등록</a></li>
->>>>>>> branch 'main' of https://github.com/Ujoonnee/JspProject.git
 	</ul>
 </nav>
