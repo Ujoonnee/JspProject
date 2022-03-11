@@ -7,5 +7,7 @@ public interface ProductService {
 	public ProductVO selectProduct(ProductVO vo);
 	public int insertProduct(ProductVO vo);
 	public int updateProduct(ProductVO vo);
+	public int updateProduct(String fileName,String fileRealName);
 	public int deleteProduct(ProductVO vo);
+	ProductVO searchImage(String thumbnail);
 }

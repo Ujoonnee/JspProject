@@ -23,10 +23,9 @@
 				<h1>상품 등록하기</h1>
 			</div>
 			<div>
-<<<<<<< HEAD
-				<form id="frm" name="frm" action="productInsert.do" method="post">
+				<form id="frm" name="frm" action="productInsert.do" method="post"  enctype="multipart/form-data" >
 					<div>
-						사진<input type="text" id="productThumbnail" name="productThumbnail">
+						사진<input type="file" id="productThumbnail" name="productThumbnail">
 					</div>
 					<div>
 						상품명<input type="text" id="productName" name="productName">
@@ -50,61 +49,12 @@
 					<input type="submit" value="저장하기">&nbsp;&nbsp;&nbsp; <input
 						type="reset" value="취소">&nbsp;&nbsp;&nbsp; <input
 						type="button" value="home" onclick="location.href='home.do'">
-=======
-				<form id="frm" name="frm" action="productInsert.do" method="post" enctype="multipart/form-data">
-					<div>
-						<input type="file" id="productThumbnail" accept="image/*" onchange="setThumbnail(event);"/>
-						<div id="image_container"></div>
-						<!--   사진<input type="text" id="productThumbnail" name="productThumbnail"> -->
-					</div>
-					<div>
-						상품명<input type="text" id="productName" name="productName">
-					</div>
-					<select id="productCategory1" name="productCategory1"
-						onchange="paintCategory2()">
-						<option value="">선택</option>
-						<option value="shirts">상의</option>
-						<option value="outers">아우터</option>
-						<option value="pants">하의</option>
-					</select> <select id="productCategory2" name="productCategory2"></select>
-					<div>
-						상품정보<input type="text" id="productInfo" name="productInfo">
-					</div>
-					<div>
-						상품재고량<input type="text" id="productStock" name="productStock">
-					</div>
-					<div>
-						상품가격<input type="text" id="productPrice" name="productPrice">
-					</div>
-					<input type="submit" value="저장하기" onclick="setFileUpLoad();">&nbsp;&nbsp;&nbsp; 
-					<input type="reset" value="취소">&nbsp;&nbsp;&nbsp; 
-					<input type="button" value="home" onclick="location.href='main.do'">
->>>>>>> branch 'main' of https://github.com/Ujoonnee/JspProject.git
-
 				</form>
+
 			</div>
 		</div>
 	</div>
 	<script>
-		function setThumbnail(event) {
-			var reader = new FileReader();
-			reader.onload = function(event) {
-				var img = document.createElement("img");
-				img.setAttribute("src", event.target.result);
-				document.querySelector("div#image_container").appendChild(img);
-			};
-			
-			
-			reader.readAsDataURL(event.target.files[0]);
-		}
-		/* 
-		function setFileUpLoad(){
-			var filename = document.getElementById('productThumbnail').files[0].name;
-			var path = "/images/product/" + filename;
-			
-			
-		} */
-		
 		function paintCategory2() {
 			productCategory2.innerHTML = '';
 
@@ -119,11 +69,7 @@
 				productCategory2.appendChild(option1);
 				productCategory2.appendChild(option2);
 
-<<<<<<< HEAD
-			} else if (productCategory1.value == 'outer') {
-=======
 			} else if (productCategory1.value == 'outers') {
->>>>>>> branch 'main' of https://github.com/Ujoonnee/JspProject.git
 				const option1 = document.createElement('option');
 				option1.value = 'jumper ';
 				option1.innerText = 'Jumper ';
