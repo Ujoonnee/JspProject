@@ -104,6 +104,35 @@ public class ProductServiceImpl extends DAO implements ProductService{
 	}
 	
 	@Override
+	public ProductVO searchImage(String thumbnail) {
+		String sql = "select * from products where product_thumbnail = ?";
+		ProductVO vo = new ProductVO();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, thumbnail);
+			rs = psmt.executeQuery();
+			
+			if (rs.next()) {
+				vo.setProductSerial(rs.getInt("product_serial"));
+				vo.setProductName(rs.getString("product_Name"));				
+				vo.setProductCategory1(rs.getString("product_category1"));
+				vo.setProductCategory2(rs.getString("product_category2"));
+				vo.setProductThumbnail(rs.getString("product_thumbnail"));
+				vo.setProductInfo(rs.getString("product_info"));
+				vo.setProductStock(rs.getInt("product_stock"));
+				vo.setProductPrice(rs.getInt("product_price"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return vo;
+	}
+	
+	@Override
 	public int insertProduct(ProductVO vo) {
 		String sql = "insert into products values(product_serial_seq.nextval,?,?,?,?,?,?,?)";
 		int r = 0;
@@ -124,6 +153,25 @@ public class ProductServiceImpl extends DAO implements ProductService{
 		} finally {
 			close();
 		}
+		return r;
+	}
+	@Override
+	public int updateProduct(String fileName, String fileRealName) {
+		String sql = "update products set  product_thumbnail = ?, product_info="
+				+ "? where product_serial = ?";
+		int r = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, fileName);
+			psmt.setString(2, fileRealName);
+			psmt.setInt(3, 1);			
+			r = psmt.executeUpdate();
+			System.out.println(r + "건 수정");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return r;
 	}
 	@Override
